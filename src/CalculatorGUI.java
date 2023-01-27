@@ -14,8 +14,10 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
 	JTextField textfield1, textfield2;
     JPanel panel, panel_2, panel_3;
     JButton zero, one, two, three, four, five, six, seven, eight, nine, 
-            add, divide, multiply, minus, del, ac, equalto, dot, multiply_tenx, ans_button, left_bracket, right_bracket,
-            x_variable, sin_function, cos_function, tan_function, arctan_function, log_ten_function, ln_function, exponential, square_number,
+            add, divide, multiply, minus, del, ac, equalto, dot, multiply_tenx, 
+            ans_button, left_bracket, right_bracket, x_variable, sin_function, 
+            cos_function, tan_function, arctan_function, arcsin_function, 
+            arccos_function, log_ten_function, ln_function, exponential, square_number,
             reciprocate_function, square_root_function, calc_function, left_direction, right_direction;
     JButton num_buttons[] = {zero, one, two, three, four, five, six, seven, eight, nine};
     char[] superscript = {'⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹'};

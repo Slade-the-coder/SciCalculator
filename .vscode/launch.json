@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch binary",
+            "request": "launch",
+            "mainClass": "binary",
+            "projectName": "SciCalculator_2ef4c746"
+        },
+        {
+            "type": "java",
             "name": "Launch CalculatorGUI",
             "request": "launch",
             "mainClass": "CalculatorGUI",
