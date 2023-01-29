@@ -395,16 +395,6 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             multiply_tenx_pressed = false;
         }
 
-        if(e.getSource() == multiply_tenx) {
-            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
-                textfield1.setText( "ANS");
-                textfield2.setText("");
-                num_operations ++;
-            }
-            multiply_tenx_pressed = true;
-            textfield1.setText(textfield1.getText().concat("x10"));
-        }
-
         if(e.getSource() == left_bracket) {
             if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
                 textfield1.setText( "ANS");
@@ -433,6 +423,16 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             textfield1.getCaret().setVisible(true);
         }
 
+        if(e.getSource() == multiply_tenx) {
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
+                textfield1.setText( "ANS");
+                textfield2.setText("");
+                num_operations ++;
+            }
+            multiply_tenx_pressed = true;
+            textfield1.setText(textfield1.getText().concat("x10"));
+        }
+        
         if(e.getSource() == square_number) {
             if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
                 textfield1.setText( "ANS");
