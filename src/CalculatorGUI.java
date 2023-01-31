@@ -1,12 +1,11 @@
-import javax.swing.*;
-import javax.swing.border.Border;
+import javax.swing.*;       // Swing is the library from which the GUI will be built upon
+import javax.swing.border.Border;       // The Border around objects in Swing
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
+import java.util.ArrayList;          
 import java.util.Arrays;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
+import java.text.DecimalFormat;     // To round a number to a certain number of decimal places
 
 public class CalculatorGUI implements java.awt.event.ActionListener {
 
@@ -432,7 +431,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             multiply_tenx_pressed = true;
             textfield1.setText(textfield1.getText().concat("x10"));
         }
-        
+
         if(e.getSource() == square_number) {
             if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
                 textfield1.setText( "ANS");
