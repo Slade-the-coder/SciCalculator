@@ -1,4 +1,4 @@
-class functions{
+class functions extends CalculatorGUI{
     
     public static int log(double base, double num) {
         int i = 0;
@@ -145,6 +145,10 @@ class functions{
     }
 
     public static double square(double number) {
+        return number*number;
+    }
+
+    public static double power(double number, double exponent) {
         return number*number;
     }
 
