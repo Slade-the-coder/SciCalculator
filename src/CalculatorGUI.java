@@ -9,55 +9,59 @@ import java.text.DecimalFormat;     // To round a number to a certain number of 
 
 public class CalculatorGUI implements java.awt.event.ActionListener {
 
-    JFrame frame;
-	JTextField textfield1, textfield2;
-    JPanel panel, panel_2, panel_3;
+    JFrame frame;       // To create a main window where components like labels, buttons, textfields are added to create a GUI
+	JTextField textfield1, textfield2;      // Areas where text is displayed on the GUI
+    JPanel panel, panel_2, panel_3;     // To provide a container class to attach components like JButton
     JButton zero, one, two, three, four, five, six, seven, eight, nine, 
             add, divide, multiply, minus, del, ac, equalto, dot, multiply_tenx, 
             ans_button, left_bracket, right_bracket, x_variable, sin_function, 
             cos_function, tan_function, arctan_function, arcsin_function, 
             arccos_function, log_ten_function, ln_function, exponential, square_number,
-            reciprocate_function, square_root_function, calc_function, left_direction, right_direction;
+            reciprocate_function, square_root_function, calc_function, left_direction, right_direction; // To create buttons by which the user can interact with the GUI
     JButton num_buttons[] = {zero, one, two, three, four, five, six, seven, eight, nine};
     char[] superscript = {'⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹'};
     char[] subscript = {'₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉'};
     String[] numbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-    int num_operations = 0;
-    Double result = 0d;
-    Double prev_result = 0d;
+    int num_operations = 0;     // keeps track of the number of operations on the program
+    Double result = 0d;     // keeps the value of the result of the most recent calculation          
+    Double prev_result = 0d;        // assigned when dealing with "ANS"
+
+    public static void main(String[] args) {
+        new CalculatorGUI();
+    }
 
     // important symbols: 𝓍
     CalculatorGUI() {
         frame = new JFrame();
         frame.setTitle("Scientific Calculator");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     // Action that should take place when the frame/window is closed  
         frame.setResizable(false);
         frame.setSize(360, 690);
         frame.setLayout(null);
 
-        ImageIcon image = new ImageIcon("C:/Users/hwils/Downloads/logo.png");
-        frame.setIconImage(image.getImage());
+        ImageIcon image = new ImageIcon("src/logo.png");
+        frame.setIconImage(image.getImage());       // set Image as the Icon of the program
         frame.getContentPane().setBackground(Color.BLACK);
 
-        Font font1 = new Font("SansSerif", Font.BOLD, 20);
+        Font font1 = new Font("Arial", Font.BOLD, 20);
  
         textfield1 = new JTextField();
         textfield1.setBounds(25, 25, 300, 60);
-        textfield1.setEditable(false);
-        textfield1.setVisible(true);
-        textfield1.setFont(font1);
-        textfield1.setBackground(Color.WHITE);
-        Border border = BorderFactory.createLineBorder(Color.WHITE);
-        textfield1.getCaret().setVisible(true);
-        textfield1.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+        textfield1.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        textfield1.setVisible(true);        // determines if the textfield is visible 
+        textfield1.setFont(font1);      // determines the font to be used by the textfield
+        textfield1.setBackground(Color.WHITE);      // sets the background of the textfield to be white
+        Border border = BorderFactory.createLineBorder(Color.WHITE);        // sets the border of the textfield to be white
+        textfield1.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));      // Determine the size of the border
+        textfield1.getCaret().setVisible(true);     // set the caret of the textfield to be visible
 
         textfield2 = new JTextField();
         textfield2.setBounds(25, 80, 300, 60);
-        textfield2.setEditable(false);
-        textfield2.setVisible(true);
-        textfield2.setFont(font1);
-        textfield2.setBackground(Color.WHITE);
-        textfield2.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+        textfield2.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        textfield2.setVisible(true);        // determines if the textfield is visible
+        textfield2.setFont(font1);      // determines the font to be used by the textfield
+        textfield2.setBackground(Color.WHITE);      // sets the background of the textfield to be white
+        textfield2.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));      // Determine the size of the border
         textfield2.setHorizontalAlignment(JTextField.RIGHT);
 
         panel = new JPanel();
@@ -123,7 +127,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         dot.setBackground(Color.WHITE);
         dot.setBorder(BorderFactory.createLineBorder(Color.black, 5));
 
-        multiply_tenx = new JButton("x10ˣ");
+        multiply_tenx = new JButton("x10ⁿ");
         multiply_tenx.setBounds(100, 100, 85, 50);
         multiply_tenx.addActionListener(this);
         multiply_tenx.setBackground(Color.WHITE);
@@ -208,10 +212,11 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         ln_function.setForeground(Color.WHITE);
         ln_function.setBorder(BorderFactory.createLineBorder(Color.black, 5));
 
-        exponential = new JButton(")");
+        exponential = new JButton("𝓍ⁿ");
         exponential.setBounds(100, 100, 85, 85);
         exponential.addActionListener(this);
-        exponential.setBackground(Color.BLACK);
+        exponential.setBackground(new Color(32, 32, 32));
+        exponential.setForeground(Color.WHITE);
         exponential.setBorder(BorderFactory.createLineBorder(Color.black, 5));
 
         square_number = new JButton("𝓍²");
@@ -242,7 +247,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         calc_function.setBorder(BorderFactory.createLineBorder(Color.black, 5));
 
         panel_2.add(calc_function); panel_2.add(x_variable); panel_2.add(log_ten_function); panel_2.add(ln_function); panel_2.add(sin_function); panel_2.add(cos_function); panel_2.add(tan_function); 
-        panel_2.add(arctan_function); panel_2.add(left_bracket); panel_2.add(right_bracket); panel_2.add(reciprocate_function); panel_2.add(square_number);
+        panel_2.add(arctan_function); panel_2.add(left_bracket); panel_2.add(right_bracket); panel_2.add(reciprocate_function); panel_2.add(square_number); panel_2.add(exponential);
 
         panel_3 = new JPanel();
         panel_3.setBounds(20,150,300,70);
@@ -274,13 +279,12 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         panel.setVisible(true);
 
     }
-    public static void main(String[] args) {
-        new CalculatorGUI();
-    }
 
     boolean multiply_tenx_pressed = false;
     boolean is_square_button_pressed = false;
+    boolean is_exponential_button_pressed = false;
     int num_of_times_square_button_pressed = 0;
+    int num_of_times_exponential_button_pressed = 0;
     
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -392,6 +396,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             textfield2.setText("");
             num_operations = 0;
             multiply_tenx_pressed = false;
+            num_of_times_square_button_pressed = 0;
         }
 
         if(e.getSource() == left_bracket) {
@@ -429,7 +434,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
                 num_operations ++;
             }
             multiply_tenx_pressed = true;
-            textfield1.setText(textfield1.getText().concat("x10"));
+            textfield1.setText(textfield1.getText().concat("x10⁽⁾"));
         }
 
         if(e.getSource() == square_number) {
@@ -439,13 +444,30 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
                 num_operations ++;
             }
             String temp = textfield1.getText();
-            if(temp.equals("") || !(Arrays.asList(numbers).contains(temp.substring(temp.length()-1, temp.length())))) {
+            if((temp.equals("") || !(Arrays.asList(numbers).contains(temp.substring(temp.length()-1, temp.length())))) && !(temp.equals("ANS"))) {
                 textfield1.setText(textfield1.getText().concat("()²"));
             }
             else textfield1.setText(textfield1.getText().concat("²"));
             textfield1.getCaret().setVisible(true);
             is_square_button_pressed = true;
             num_of_times_square_button_pressed += 1;
+            
+        }
+
+        if(e.getSource() == exponential) {
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
+                textfield1.setText( "ANS");
+                textfield2.setText("");
+                num_operations ++;
+            }
+            String temp = textfield1.getText();
+            if(temp.equals("") || !(Arrays.asList(numbers).contains(temp.substring(temp.length()-1, temp.length())))) {
+                textfield1.setText(textfield1.getText().concat("()⁽⁾"));
+            }
+            else textfield1.setText(textfield1.getText().concat("⁽⁾"));
+            textfield1.getCaret().setVisible(true);
+            is_exponential_button_pressed = true;
+            num_of_times_exponential_button_pressed += 1;
             
         }
 
@@ -572,9 +594,14 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
 
             // square nuber 
             while(is_square_button_pressed == true && num_of_times_square_button_pressed != 0) {
+                if(text.contains("ANS²")) {
+                    int o = text.indexOf("ANS²");
+                    text = text.replace(text.substring(o, o+3), String.valueOf(result));
+                }
                 int j = text.indexOf("²");
                 int n = j;
-                if(Arrays.asList(numbers).contains(text.substring(n-1, n)) && !(Arrays.asList(superscript).contains(text.substring(n-1)) || Arrays.asList(superscript).contains(text.substring(n+1)))){
+                // dot is causing some issues here
+                if(Arrays.asList(numbers).contains(text.substring(n-1, n)) && !(Arrays.asList(superscript).contains(text.substring(n-1))) || Arrays.asList(superscript).contains(text.substring(n+1))){
                     String number = "";
                     while(n != 0 && Arrays.asList(numbers).contains(text.substring(n-1, n))) {
                         n--;
@@ -598,6 +625,41 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
                     num_of_times_square_button_pressed--;
                 }
             }
+
+            // Exponentiation
+            while(is_exponential_button_pressed == true && num_of_times_exponential_button_pressed != 0) {
+                int j = text.indexOf("⁽");
+                int n = j;
+                int p = j;
+                if(Arrays.asList(numbers).contains(text.substring(n-1, n)) && !(Arrays.asList(superscript).contains(text.substring(n-1)) || Arrays.asList(superscript).contains(text.substring(n+1)))){
+                    String number = "";
+                    while(n != 0 && Arrays.asList(numbers).contains(text.substring(n-1, n))) {
+                        n--;
+                    }
+                    while(p != 0 && Arrays.asList(superscript).contains(text.substring(p+1, p+2))) {
+                        p++;
+                    }
+                    number = text.substring(n, j);
+                    String exponent = text.substring(j+1, p+1);
+                    String temp = String.valueOf(functions.power(Double.valueOf(number), Double.valueOf(exponent)));
+                    text = text.replaceFirst(text.substring(n, p+2), temp);
+                    num_of_times_exponential_button_pressed--;
+                } 
+                if(text.contains(")⁽")) {
+                    j = text.indexOf(")⁽");
+                    n = j;
+                    String number = "";
+                    while(!(text.substring(n-1, n).equals("("))) {
+                        n--;
+                    }
+                    number = text.substring(n, j);
+                    String temp = String.valueOf(functions.square(Double.valueOf(number)));
+                    // issue here when problem is duplicated
+                    text = text.replaceFirst(text.substring(n-1, number.length()+n+2), temp);
+                    num_of_times_exponential_button_pressed--;
+                }
+            }
+
 
             if(text.contains("-")) {
                 // Include more operators later
