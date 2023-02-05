@@ -16,8 +16,8 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             add, divide, multiply, minus, del, ac, equalto, dot, multiply_tenx, 
             ans_button, left_bracket, right_bracket, x_variable, sin_function, 
             cos_function, tan_function, arctan_function, arcsin_function, 
-            arccos_function, log_ten_function, ln_function, exponential, square_number,
-            reciprocate_function, square_root_function, calc_function, left_direction, right_direction; // To create buttons by which the user can interact with the GUI
+            arccos_function, log_function, log_ten_function, ln_function, factorial, exponential, square_number,
+            reciprocate_function, square_root_function, calc_function, shift, alpha, left_direction, right_direction; // To create buttons by which the user can interact with the GUI
     JButton num_buttons[] = {zero, one, two, three, four, five, six, seven, eight, nine};
     char[] superscript = {'⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹'};
     char[] subscript = {'₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉'};
@@ -44,100 +44,175 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         frame.getContentPane().setBackground(Color.BLACK);
 
         Font font1 = new Font("Arial", Font.BOLD, 20);
+        Font font2 = new Font("Arial", Font.BOLD, 10);
  
         textfield1 = new JTextField();
-        textfield1.setBounds(25, 25, 300, 60);
+        textfield1.setBounds(25, 45, 300, 30);
         textfield1.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
         textfield1.setVisible(true);        // determines if the textfield is visible 
         textfield1.setFont(font1);      // determines the font to be used by the textfield
         textfield1.setBackground(Color.WHITE);      // sets the background of the textfield to be white
-        Border border = BorderFactory.createLineBorder(Color.WHITE);        // sets the border of the textfield to be white
-        textfield1.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));      // Determine the size of the border
+        textfield1.setBorder(BorderFactory.createMatteBorder(0, 10, 0, 10, Color.GRAY));      // Determine the size and color of the border
         textfield1.getCaret().setVisible(true);     // set the caret of the textfield to be visible
 
         textfield2 = new JTextField();
-        textfield2.setBounds(25, 80, 300, 60);
+        textfield2.setBounds(25, 110, 300, 30);
         textfield2.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
         textfield2.setVisible(true);        // determines if the textfield is visible
         textfield2.setFont(font1);      // determines the font to be used by the textfield
         textfield2.setBackground(Color.WHITE);      // sets the background of the textfield to be white
-        textfield2.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(10, 10, 10, 10)));      // Determine the size of the border
-        textfield2.setHorizontalAlignment(JTextField.RIGHT);
+        textfield2.setBorder(BorderFactory.createMatteBorder(0, 10, 10, 10, Color.GRAY));      // Determine the size and color of the border
+        textfield2.setHorizontalAlignment(JTextField.RIGHT);        // Sets the alignment of the text on the textfield to the right
+
+        JTextField textfield3 = new JTextField();
+        textfield3.setBounds(25, 33, 300, 12);
+        textfield3.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        textfield3.setVisible(true);        // determines if the textfield is visible
+        textfield3.setFont(font2);      // determines the font to be used by the textfield
+        textfield3.setBackground(Color.GRAY);      // sets the background of the textfield to be gray
+        textfield3.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY));      // Determine the size and color of the border
+        textfield3.setText("   S");
+        textfield3.setForeground(Color.BLACK);
+        frame.add(textfield3);
+
+        JTextField textfield4 = new JTextField();
+        textfield4.setBounds(25, 75, 300, 35);
+        textfield4.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        textfield4.setVisible(true);        // determines if the textfield is visible
+        textfield4.setFont(font1);      // determines the font to be used by the textfield
+        textfield4.setBackground(Color.WHITE);      // sets the background of the textfield to be white
+        textfield4.setBorder(BorderFactory.createMatteBorder(0, 10, 0, 10, Color.GRAY));      // Determine the size and color of the border
+        frame.add(textfield4);
 
         panel = new JPanel();
         panel.setBounds(20,450,300,170);
         panel.setBackground(Color.black);  
-        panel.setLayout(new GridLayout(4, 5));
+        panel.setLayout(new GridLayout(4, 5, 10, 13));
 
         for(int i = 0; i < num_buttons.length; i++){
             num_buttons[i] = new JButton(Integer.toString(i));
             num_buttons[i].setBounds(0, 100, 85, 50);
             num_buttons[i].addActionListener(this);
             num_buttons[i].setBackground(Color.WHITE);
-            num_buttons[i].setBorder(BorderFactory.createLineBorder(Color.black, 5));
+            num_buttons[i].setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
         }
+        // Shift function of number 7
+        JTextField constants = new JTextField();
+        constants.setBounds(28, 438, 37, 12);
+        constants.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        constants.setVisible(true);        // determines if the textfield is visible
+        constants.setFont(font2);      // determines the font to be used by the textfield
+        constants.setBackground(Color.BLACK);      // sets the background of the textfield to be white 
+        constants.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        constants.setText("CONST");
+        constants.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(constants);
 
         add = new JButton("+");
         add.setBounds(100, 100, 85, 50);
         add.addActionListener(this);
         add.setBackground(Color.WHITE);
-        add.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        add.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
 
         divide = new JButton("÷");
         divide.setBounds(100, 100, 85, 50);
         divide.addActionListener(this);
         divide.setBackground(Color.WHITE);
-        divide.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        divide.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        // Shift function of divide
+        JTextField combination = new JTextField();
+        combination.setBounds(287, 484, 33, 12);
+        combination.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        combination.setVisible(true);        // determines if the textfield is visible
+        combination.setFont(font2);      // determines the font to be used by the textfield
+        combination.setBackground(Color.BLACK);      // sets the background of the textfield to be black
+        combination.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        combination.setText("nCr");
+        combination.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(combination);
 
         minus = new JButton("-");
         minus.setBounds(100, 100, 85, 50);
         minus.addActionListener(this);
         minus.setBackground(Color.WHITE);
-        minus.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        minus.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
 
         multiply = new JButton("x");
         multiply.setBounds(100, 100, 85, 50);
         multiply.addActionListener(this);
         multiply.setBackground(Color.WHITE);
-        multiply.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        multiply.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        // Shift function of multiply
+        JTextField permutation = new JTextField();
+        permutation.setBounds(223, 484, 33, 12);
+        permutation.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        permutation.setVisible(true);        // determines if the textfield is visible
+        permutation.setFont(font2);      // determines the font to be used by the textfield
+        permutation.setBackground(Color.BLACK);      // sets the background of the textfield to be black
+        permutation.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        permutation.setText("nPr");
+        permutation.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(permutation);
 
         equalto = new JButton("=");
         equalto.setBounds(100, 100, 85, 50);
         equalto.addActionListener(this);
         equalto.setBackground(Color.WHITE);
-        equalto.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        equalto.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
 
         del = new JButton("DEL");
         del.setBounds(100, 100, 85, 50);
         del.addActionListener(this);
         del.setBackground(new Color(70, 90, 177));
         del.setForeground(Color.WHITE);
-        del.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        del.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
 
         ac = new JButton("AC");
         ac.setBounds(100, 100, 85, 50);
         ac.addActionListener(this);
         ac.setBackground(new Color(70, 90, 177));
         ac.setForeground(Color.WHITE);
-        ac.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        ac.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
 
         dot = new JButton(".");
         dot.setBounds(100, 100, 85, 50);
         dot.addActionListener(this);
         dot.setBackground(Color.WHITE);
-        dot.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        dot.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
 
         multiply_tenx = new JButton("x10ⁿ");
         multiply_tenx.setBounds(100, 100, 85, 50);
         multiply_tenx.addActionListener(this);
         multiply_tenx.setBackground(Color.WHITE);
-        multiply_tenx.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        multiply_tenx.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        // Shift function of multiply tenx button
+        JTextField pie_symbol = new JTextField();
+        pie_symbol.setBounds(145, 573, 33, 12);
+        pie_symbol.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        pie_symbol.setVisible(true);        // determines if the textfield is visible
+        pie_symbol.setFont(font2);      // determines the font to be used by the textfield
+        pie_symbol.setBackground(Color.BLACK);      // sets the background of the textfield to be black 
+        pie_symbol.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        pie_symbol.setText("π");
+        pie_symbol.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(pie_symbol);
 
         ans_button = new JButton("ANS");
         ans_button.setBounds(100, 100, 85, 50);
         ans_button.addActionListener(this);
         ans_button.setBackground(Color.WHITE);
-        ans_button.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        ans_button.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        // Shift function of ans button
+        JTextField percentage_symbol = new JTextField();
+        percentage_symbol.setBounds(227, 573, 33, 12);
+        percentage_symbol.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        percentage_symbol.setVisible(true);        // determines if the textfield is visible
+        percentage_symbol.setFont(font2);      // determines the font to be used by the textfield
+        percentage_symbol.setBackground(Color.BLACK);      // sets the background of the textfield to be white 
+        percentage_symbol.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        percentage_symbol.setText("%");
+        percentage_symbol.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(percentage_symbol);
 
         panel.add(num_buttons[7]); panel.add(num_buttons[8]); panel.add(num_buttons[9]); panel.add(del); panel.add(ac); 
         panel.add(num_buttons[4]); panel.add(num_buttons[5]); panel.add(num_buttons[6]); panel.add(multiply); panel.add(divide);
@@ -145,109 +220,168 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         panel.add(num_buttons[0]); panel.add(dot); panel.add(multiply_tenx); panel.add(ans_button); panel.add(equalto);
 
         panel_2 = new JPanel();
-        panel_2.setBounds(20,250,300,170);
+        panel_2.setBounds(20,253,300,170);
         panel_2.setBackground(Color.green);
-        panel_2.setLayout(new GridLayout(4, 6));
+        panel_2.setLayout(new GridLayout(4, 6, 10, 10));
         
         left_bracket = new JButton("(");
         left_bracket.setBounds(100, 100, 85, 85);
         left_bracket.addActionListener(this);
         left_bracket.setBackground(new Color(32, 32, 32));
         left_bracket.setForeground(Color.WHITE);
-        left_bracket.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        left_bracket.setBorder(BorderFactory.createLineBorder(Color.black));
 
         right_bracket = new JButton(")");
         right_bracket.setBounds(100, 100, 85, 85);
         right_bracket.addActionListener(this);
         right_bracket.setBackground(new Color(32, 32, 32));
         right_bracket.setForeground(Color.WHITE);
-        right_bracket.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        right_bracket.setBorder(BorderFactory.createLineBorder(Color.black));
 
         x_variable = new JButton("𝓍");
         x_variable.setBounds(100, 100, 85, 85);
         x_variable.addActionListener(this);
         x_variable.setBackground(new Color(32, 32, 32));
         x_variable.setForeground(Color.WHITE);
-        x_variable.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        x_variable.setBorder(BorderFactory.createLineBorder(Color.black));
 
-        sin_function = new JButton("sin(𝓍)");
+        sin_function = new JButton("sin");
         sin_function.setBounds(100, 100, 85, 85);
         sin_function.addActionListener(this);
         sin_function.setBackground(new Color(32, 32, 32));
         sin_function.setForeground(Color.WHITE);
-        sin_function.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        sin_function.setBorder(BorderFactory.createLineBorder(Color.black));
+        // Shift function of sin
+        JTextField arcsin_function = new JTextField();
+        arcsin_function.setBounds(98, 287, 33, 12);
+        arcsin_function.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        arcsin_function.setVisible(true);        // determines if the textfield is visible
+        arcsin_function.setFont(font2);      // determines the font to be used by the textfield
+        arcsin_function.setBackground(Color.BLACK);      // sets the background of the textfield to be white
+        Border border_2 = BorderFactory.createLineBorder(Color.BLACK); 
+        arcsin_function.setBorder(BorderFactory.createCompoundBorder(border_2, BorderFactory.createEmptyBorder(0, 0, 0, 0)));
+        arcsin_function.setText("arcsin");
+        arcsin_function.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(arcsin_function);
 
-        cos_function = new JButton("cos(𝓍)");
+        cos_function = new JButton("cos");
         cos_function.setBounds(100, 100, 85, 85);
         cos_function.addActionListener(this);
         cos_function.setBackground(new Color(32, 32, 32));
         cos_function.setForeground(Color.WHITE);
-        cos_function.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        cos_function.setBorder(BorderFactory.createLineBorder(Color.black));
+        // Shift function of cos
+        JTextField arccos_function = new JTextField();
+        arccos_function.setBounds(175, 287, 38, 12);
+        arccos_function.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        arccos_function.setVisible(true);        // determines if the textfield is visible
+        arccos_function.setFont(font2);      // determines the font to be used by the textfield
+        arccos_function.setBackground(Color.BLACK);      // sets the background of the textfield to be white 
+        arccos_function.setBorder(BorderFactory.createCompoundBorder(border_2, BorderFactory.createEmptyBorder(0, 0, 0, 0)));
+        arccos_function.setText("arccos");
+        arccos_function.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(arccos_function);
+        
 
-        tan_function = new JButton("tan(𝓍)");
+        tan_function = new JButton("tan");
         tan_function.setBounds(100, 100, 85, 85);
         tan_function.addActionListener(this);
         tan_function.setBackground(new Color(32, 32, 32));
         tan_function.setForeground(Color.WHITE);
-        tan_function.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        tan_function.setBorder(BorderFactory.createLineBorder(Color.black));        
+        // Shift function of tan
+        JTextField arctan_function = new JTextField();
+        arctan_function.setBounds(252, 287, 38, 12);
+        arctan_function.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        arctan_function.setVisible(true);        // determines if the textfield is visible
+        arctan_function.setFont(font2);      // determines the font to be used by the textfield
+        arctan_function.setBackground(Color.BLACK);      // sets the background of the textfield to be white 
+        arctan_function.setBorder(BorderFactory.createCompoundBorder(border_2, BorderFactory.createEmptyBorder(0, 0, 0, 0)));
+        arctan_function.setText("arctan");
+        arctan_function.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(arctan_function);
 
-        arctan_function = new JButton("arctan(𝓍)");
-        arctan_function.setBounds(100, 100, 85, 85);
-        arctan_function.addActionListener(this);
-        arctan_function.setBackground(new Color(32, 32, 32));
-        arctan_function.setForeground(Color.WHITE);
-        arctan_function.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        log_function = new JButton("log₍ₐ₎(n)");
+        log_function.setBounds(100, 100, 85, 85);
+        log_function.addActionListener(this);
+        log_function.setBackground(new Color(32, 32, 32));
+        log_function.setForeground(Color.WHITE);
+        log_function.setBorder(BorderFactory.createLineBorder(Color.black));
 
         log_ten_function = new JButton("log₁₀(n)");
         log_ten_function.setBounds(100, 100, 85, 85);
         log_ten_function.addActionListener(this);
         log_ten_function.setBackground(new Color(32, 32, 32));
         log_ten_function.setForeground(Color.WHITE);
-        log_ten_function.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        log_ten_function.setBorder(BorderFactory.createLineBorder(Color.black));
 
         ln_function = new JButton("ln(n)");
         ln_function.setBounds(100, 100, 85, 85);
         ln_function.addActionListener(this);
         ln_function.setBackground(new Color(32, 32, 32));
         ln_function.setForeground(Color.WHITE);
-        ln_function.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        ln_function.setBorder(BorderFactory.createLineBorder(Color.black));        
+        // Shift function of ln(n)
+        JTextField eulers_number = new JTextField();
+        eulers_number.setBounds(21, 287, 38, 12);
+        eulers_number.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        eulers_number.setVisible(true);        // determines if the textfield is visible
+        eulers_number.setFont(font2);      // determines the font to be used by the textfield
+        eulers_number.setBackground(Color.BLACK);      // sets the background of the textfield to be white 
+        eulers_number.setBorder(BorderFactory.createCompoundBorder(border_2, BorderFactory.createEmptyBorder(0, 0, 0, 0)));
+        eulers_number.setText("eⁿ");
+        eulers_number.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(eulers_number);
+        
 
         exponential = new JButton("𝓍ⁿ");
         exponential.setBounds(100, 100, 85, 85);
         exponential.addActionListener(this);
         exponential.setBackground(new Color(32, 32, 32));
         exponential.setForeground(Color.WHITE);
-        exponential.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        exponential.setBorder(BorderFactory.createLineBorder(Color.black));
 
         square_number = new JButton("𝓍²");
         square_number.setBounds(100, 100, 85, 85);
         square_number.addActionListener(this);
         square_number.setBackground(new Color(32, 32, 32));
         square_number.setForeground(Color.WHITE);
-        square_number.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        square_number.setBorder(BorderFactory.createLineBorder(Color.black));
 
         reciprocate_function = new JButton("𝓍⁻¹");
         reciprocate_function.setBounds(100, 100, 85, 85);
         reciprocate_function.addActionListener(this);
         reciprocate_function.setBackground(new Color(32, 32, 32));
         reciprocate_function.setForeground(Color.WHITE);
-        reciprocate_function.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        reciprocate_function.setBorder(BorderFactory.createLineBorder(Color.black));
+        // Shift function of reciprocate function
+        JTextField factorial = new JTextField();
+        factorial.setBounds(98, 325, 33, 12);
+        factorial.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        factorial.setVisible(true);        // determines if the textfield is visible
+        factorial.setFont(font2);      // determines the font to be used by the textfield
+        factorial.setBackground(Color.BLACK);      // sets the background of the textfield to be white 
+        factorial.setBorder(BorderFactory.createCompoundBorder(border_2, BorderFactory.createEmptyBorder(0, 0, 0, 0)));
+        factorial.setText("n!");
+        factorial.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(factorial);
 
         square_root_function = new JButton(")");
         square_root_function.setBounds(100, 100, 85, 85);
         square_root_function.addActionListener(this);
         square_root_function.setBackground(Color.BLACK);
-        square_root_function.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        square_root_function.setBorder(BorderFactory.createLineBorder(Color.black));
 
         calc_function = new JButton("CALC");
         calc_function.setBounds(100, 100, 85, 85);
         calc_function.addActionListener(this);
         calc_function.setBackground(new Color(32, 32, 32));
         calc_function.setForeground(Color.WHITE);
-        calc_function.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        calc_function.setBorder(BorderFactory.createLineBorder(Color.black));
 
-        panel_2.add(calc_function); panel_2.add(x_variable); panel_2.add(log_ten_function); panel_2.add(ln_function); panel_2.add(sin_function); panel_2.add(cos_function); panel_2.add(tan_function); 
-        panel_2.add(arctan_function); panel_2.add(left_bracket); panel_2.add(right_bracket); panel_2.add(reciprocate_function); panel_2.add(square_number); panel_2.add(exponential);
+        panel_2.add(calc_function); panel_2.add(x_variable); panel_2.add(log_function); panel_2.add(log_ten_function); panel_2.add(ln_function); 
+        panel_2.add(sin_function); panel_2.add(cos_function); panel_2.add(tan_function); panel_2.add(left_bracket); 
+        panel_2.add(right_bracket); panel_2.add(reciprocate_function); panel_2.add(square_number); panel_2.add(exponential);
 
         panel_3 = new JPanel();
         panel_3.setBounds(20,150,300,70);
@@ -268,17 +402,32 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         right_direction.setForeground(Color.WHITE);
         right_direction.setBorder(BorderFactory.createLineBorder(Color.black, 5));
 
+        left_direction = new JButton("<");
+        left_direction.setBounds(100, 100, 85, 85);
+        left_direction.addActionListener(this);
+        left_direction.setBackground(new Color(192, 192, 192));
+        left_direction.setForeground(Color.WHITE);
+        left_direction.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+
+        right_direction = new JButton(">");
+        right_direction.setBounds(100, 100, 85, 85);
+        right_direction.addActionListener(this);
+        right_direction.setBackground(new Color(192, 192, 192));
+        right_direction.setForeground(Color.WHITE);
+        right_direction.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+
         panel_3.add(left_direction); panel_3.add(right_direction);
 
-        frame.add(textfield1);
-        frame.add(textfield2);
         frame.add(panel);
         frame.add(panel_2);
         frame.add(panel_3);
+        frame.add(textfield1);
+        frame.add(textfield2);
         frame.setVisible(true);
         panel.setVisible(true);
-
+         
     }
+    
 
     boolean multiply_tenx_pressed = false;
     boolean is_square_button_pressed = false;
@@ -509,6 +658,15 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             }
             textfield1.setText(textfield1.getText().concat("arctan("));
             textfield1.getCaret().setVisible(true);
+        }
+
+        if(e.getSource() == log_function) {
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
+                textfield1.setText( "ANS");
+                textfield2.setText("");
+                num_operations ++;
+            }
+            textfield1.setText(textfield1.getText().concat("log₍₎()"));
         }
 
         if(e.getSource() == log_ten_function) {
