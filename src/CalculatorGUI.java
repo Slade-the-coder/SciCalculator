@@ -17,7 +17,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             ans_button, left_bracket, right_bracket, x_variable, sin_function, 
             cos_function, tan_function, arctan_function, arcsin_function, 
             arccos_function, log_function, log_ten_function, ln_function, factorial, exponential, square_number,
-            reciprocate_function, square_root_function, calc_function, shift, alpha, left_direction, right_direction; // To create buttons by which the user can interact with the GUI
+            reciprocate_function, square_root_function, calc_function, shift, alpha, left_direction, right_direction, menu; // To create buttons by which the user can interact with the GUI
     JButton num_buttons[] = {zero, one, two, three, four, five, six, seven, eight, nine};
     char[] superscript = {'⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹'};
     char[] subscript = {'₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉'};
@@ -384,11 +384,15 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         panel_2.add(right_bracket); panel_2.add(reciprocate_function); panel_2.add(square_number); panel_2.add(exponential);
 
         panel_3 = new JPanel();
-        panel_3.setBounds(20,150,300,70);
+        panel_3.setBounds(20,150,300,60);
         panel_3.setBackground(Color.green);
         panel_3.setLayout(new GridLayout(1, 1));
 
-        left_direction = new JButton("<");
+        Font font3 = new Font("Arial", Font.BOLD, 24);
+
+        left_direction = new JButton();
+        left_direction.setFont(font3);
+        left_direction.setText("<");        
         left_direction.setBounds(100, 100, 85, 85);
         left_direction.addActionListener(this);
         left_direction.setBackground(new Color(192, 192, 192));
@@ -416,7 +420,29 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         right_direction.setForeground(Color.WHITE);
         right_direction.setBorder(BorderFactory.createLineBorder(Color.black, 5));
 
-        panel_3.add(left_direction); panel_3.add(right_direction);
+        shift = new JButton("shift");
+        shift.setBounds(100, 100, 85, 85);
+        shift.addActionListener(this);
+        shift.setBackground(new Color(192, 192, 192));
+        shift.setForeground(Color.WHITE);
+        shift.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        shift.setForeground(Color.getHSBColor(41, 26, 64));
+
+        alpha = new JButton("alpha");
+        alpha.setBounds(100, 100, 85, 85);
+        alpha.addActionListener(this);
+        alpha.setBackground(new Color(192, 192, 192));
+        alpha.setForeground(Color.WHITE);
+        alpha.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        
+        menu = new JButton("menu");
+        menu.setBounds(100, 100, 85, 85);
+        menu.addActionListener(this);
+        menu.setBackground(new Color(192, 192, 192));
+        menu.setForeground(Color.WHITE);
+        menu.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+
+        panel_3.add(shift); panel_3.add(alpha);panel_3.add(left_direction); panel_3.add(right_direction); panel_3.add(menu);
 
         frame.add(panel);
         frame.add(panel_2);
@@ -535,7 +561,10 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         }
 
         if(e.getSource() == del) {
-            textfield1.setText(textfield1.getText().substring(0, textfield1.getText().length()-1));
+            int temp = textfield1.getCaretPosition();
+            String usertext = textfield1.getText();
+            textfield1.setText(usertext.substring(0, temp-1)+usertext.substring(temp, usertext.length()));
+            textfield1.setCaretPosition(temp-1);
             textfield2.setText("");
             num_operations = 0;
         }
