@@ -85,17 +85,17 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         textfield4.setBorder(BorderFactory.createMatteBorder(0, 10, 0, 10, Color.GRAY));      // Determine the size and color of the border
         frame.add(textfield4);
 
-        panel = new JPanel();
-        panel.setBounds(20,450,300,170);
-        panel.setBackground(Color.black);  
-        panel.setLayout(new GridLayout(4, 5, 10, 13));
+        panel = new JPanel();       // assigning a variable to a new object of JPanel
+        panel.setBounds(20,450,300,170);        // Determines the dimensions of the panel and where it will be on the Contentpane(window content)
+        panel.setBackground(Color.black);       // Sets the background of the panel to black
+        panel.setLayout(new GridLayout(4, 5, 10, 13));      // Determines the layout of the panel and the space between buttons
 
         for(int i = 0; i < num_buttons.length; i++){
-            num_buttons[i] = new JButton(Integer.toString(i));
-            num_buttons[i].setBounds(0, 100, 85, 50);
-            num_buttons[i].addActionListener(this);
-            num_buttons[i].setBackground(Color.WHITE);
-            num_buttons[i].setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+            num_buttons[i] = new JButton(Integer.toString(i));      // assigning a variable to a new object of JButton
+            num_buttons[i].setBounds(0, 100, 85, 50);       // Determines the dimensions of the button and where it will be on the Contentpane
+            num_buttons[i].addActionListener(this);     // Adds an actionlistener to the button which monitors when the button is clicked
+            num_buttons[i].setBackground(Color.WHITE);      // Sets the colour of the button to white
+            num_buttons[i].setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));     // Determines the border of the buttons, it's dimensions and colour
         }
         // Shift function of number 7
         JTextField constants = new JTextField();
