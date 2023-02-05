@@ -14,17 +14,18 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
     JPanel panel, panel_2, panel_3;     // To provide a container class to attach components like JButton
     JButton zero, one, two, three, four, five, six, seven, eight, nine, 
             add, divide, multiply, minus, del, ac, equalto, dot, multiply_tenx, 
-            ans_button, left_bracket, right_bracket, x_variable, sin_function, 
+            ans_button, left_bracket, right_bracket, x_variable, square_root, sin_function, 
             cos_function, tan_function, arctan_function, arcsin_function, 
-            arccos_function, log_function, log_ten_function, ln_function, factorial, exponential, square_number,
-            reciprocate_function, square_root_function, calc_function, shift, alpha, left_direction, right_direction, menu; // To create buttons by which the user can interact with the GUI
-    JButton num_buttons[] = {zero, one, two, three, four, five, six, seven, eight, nine};
+            arccos_function, sto_button, log_function, log_ten_function, ln_function, factorial, exponential, square_number,
+            reciprocate_function, square_root_function, abs, calc_function, shift, alpha, left_direction, right_direction, menu; // To create buttons by which the user can interact with the GUI
+    JButton num_buttons[] = {zero, one, two, three, four, five, six, seven, eight, nine};   
     char[] superscript = {'⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹'};
     char[] subscript = {'₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉'};
     String[] numbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
     int num_operations = 0;     // keeps track of the number of operations on the program
     Double result = 0d;     // keeps the value of the result of the most recent calculation          
     Double prev_result = 0d;        // assigned when dealing with "ANS"
+    String trig_x;      // To keep track on what type of x-value is being used by the trigonometric functions
 
     public static void main(String[] args) {
         new CalculatorGUI();
@@ -44,7 +45,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         frame.getContentPane().setBackground(Color.BLACK);
 
         Font font1 = new Font("Arial", Font.BOLD, 20);
-        Font font2 = new Font("Arial", Font.BOLD, 10);
+        Font font2 = new Font("Arial", Font.BOLD, 11);
  
         textfield1 = new JTextField();
         textfield1.setBounds(25, 45, 300, 30);
@@ -109,7 +110,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         frame.add(constants);
 
         add = new JButton("+");
-        add.setBounds(100, 100, 85, 50);
+        add.setBounds(100, 100, 85, 50); 
         add.addActionListener(this);
         add.setBackground(Color.WHITE);
         add.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
@@ -245,6 +246,28 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         x_variable.setForeground(Color.WHITE);
         x_variable.setBorder(BorderFactory.createLineBorder(Color.black));
 
+        square_root = new JButton("√n");
+        square_root.setBounds(100, 100, 85, 85);
+        square_root.addActionListener(this);
+        square_root.setBackground(new Color(32, 32, 32));
+        square_root.setForeground(Color.WHITE);
+        square_root.setBorder(BorderFactory.createLineBorder(Color.black));
+        // Shift function of square root
+        JTextField cube_root = new JTextField();
+        cube_root.setBounds(175, 240, 33, 12);
+        cube_root.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        cube_root.setVisible(true);        // determines if the textfield is visible
+        cube_root.setFont(font2);      // determines the font to be used by the textfield
+        cube_root.setBackground(Color.BLACK);      // sets the background of the textfield to be white
+        cube_root.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        cube_root.setText("³√n");
+        cube_root.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(cube_root);
+
+        // To indicate the trigonometric default 𝓍-value is in degrees
+        trig_x = "D";
+        textfield3.setText("         "+trig_x);
+
         sin_function = new JButton("sin");
         sin_function.setBounds(100, 100, 85, 85);
         sin_function.addActionListener(this);
@@ -253,7 +276,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         sin_function.setBorder(BorderFactory.createLineBorder(Color.black));
         // Shift function of sin
         JTextField arcsin_function = new JTextField();
-        arcsin_function.setBounds(98, 287, 33, 12);
+        arcsin_function.setBounds(98, 287, 38, 12);
         arcsin_function.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
         arcsin_function.setVisible(true);        // determines if the textfield is visible
         arcsin_function.setFont(font2);      // determines the font to be used by the textfield
@@ -272,7 +295,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         cos_function.setBorder(BorderFactory.createLineBorder(Color.black));
         // Shift function of cos
         JTextField arccos_function = new JTextField();
-        arccos_function.setBounds(175, 287, 38, 12);
+        arccos_function.setBounds(175, 287, 43, 12);
         arccos_function.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
         arccos_function.setVisible(true);        // determines if the textfield is visible
         arccos_function.setFont(font2);      // determines the font to be used by the textfield
@@ -301,6 +324,13 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         arctan_function.setForeground(Color.getHSBColor(41, 26, 64));
         frame.add(arctan_function);
 
+        sto_button = new JButton("STO");
+        sto_button.setBounds(100, 100, 85, 85);
+        sto_button.addActionListener(this);
+        sto_button.setBackground(new Color(32, 32, 32));
+        sto_button.setForeground(Color.WHITE);
+        sto_button.setBorder(BorderFactory.createLineBorder(Color.black));   
+
         log_function = new JButton("log₍ₐ₎(n)");
         log_function.setBounds(100, 100, 85, 85);
         log_function.addActionListener(this);
@@ -314,6 +344,17 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         log_ten_function.setBackground(new Color(32, 32, 32));
         log_ten_function.setForeground(Color.WHITE);
         log_ten_function.setBorder(BorderFactory.createLineBorder(Color.black));
+        // Shift function of log₁₀(n)
+        JTextField ten_raised_n = new JTextField();
+        ten_raised_n.setBounds(252, 240, 38, 12);
+        ten_raised_n.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        ten_raised_n.setVisible(true);        // determines if the textfield is visible
+        ten_raised_n.setFont(font2);      // determines the font to be used by the textfield
+        ten_raised_n.setBackground(Color.BLACK);      // sets the background of the textfield to be white 
+        ten_raised_n.setBorder(BorderFactory.createCompoundBorder(border_2, BorderFactory.createEmptyBorder(0, 0, 0, 0)));
+        ten_raised_n.setText("10ⁿ");
+        ten_raised_n.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(ten_raised_n);
 
         ln_function = new JButton("ln(n)");
         ln_function.setBounds(100, 100, 85, 85);
@@ -356,7 +397,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         reciprocate_function.setBorder(BorderFactory.createLineBorder(Color.black));
         // Shift function of reciprocate function
         JTextField factorial = new JTextField();
-        factorial.setBounds(175, 332, 33, 12);
+        factorial.setBounds(21, 378, 33, 12);
         factorial.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
         factorial.setVisible(true);        // determines if the textfield is visible
         factorial.setFont(font2);      // determines the font to be used by the textfield
@@ -378,10 +419,28 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         calc_function.setBackground(new Color(32, 32, 32));
         calc_function.setForeground(Color.WHITE);
         calc_function.setBorder(BorderFactory.createLineBorder(Color.black));
+        // Shift function of CALC
+        JTextField solve_x = new JTextField();
+        solve_x.setBounds(23, 240, 37, 12);
+        solve_x.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
+        solve_x.setVisible(true);        // determines if the textfield is visible
+        solve_x.setFont(font2);      // determines the font to be used by the textfield
+        solve_x.setBackground(Color.BLACK);      // sets the background of the textfield to be white
+        solve_x.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        solve_x.setText("SOLVE");
+        solve_x.setForeground(Color.getHSBColor(41, 26, 64));
+        frame.add(solve_x);
 
-        panel_2.add(calc_function); panel_2.add(x_variable); panel_2.add(log_function); panel_2.add(log_ten_function); panel_2.add(ln_function); 
-        panel_2.add(sin_function); panel_2.add(cos_function); panel_2.add(tan_function); panel_2.add(left_bracket); 
-        panel_2.add(right_bracket); panel_2.add(reciprocate_function); panel_2.add(square_number); panel_2.add(exponential);
+        abs = new JButton("abs");
+        abs.setBounds(100, 100, 85, 85);
+        abs.addActionListener(this);
+        abs.setBackground(new Color(32, 32, 32));
+        abs.setForeground(Color.WHITE);
+        abs.setBorder(BorderFactory.createLineBorder(Color.black)); 
+
+        panel_2.add(calc_function); panel_2.add(x_variable); panel_2.add(square_root); panel_2.add(log_ten_function); panel_2.add(ln_function);  
+        panel_2.add(sin_function); panel_2.add(cos_function); panel_2.add(tan_function); panel_2.add(log_function); panel_2.add(left_bracket); 
+        panel_2.add(right_bracket); panel_2.add(sto_button); panel_2.add(reciprocate_function); panel_2.add(square_number); panel_2.add(exponential); panel_2.add(abs);
 
         panel_3 = new JPanel();
         panel_3.setBounds(20,150,300,60);
@@ -499,6 +558,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             }
             // display caret
             textfield1.getCaret().setVisible(true);
+            textfield2.setText("");
         }
         if(e.getSource() == right_direction) {
             if(!((textfield1.getText().equals("")) || textfield1.getCaretPosition() == textfield1.getText().length())) {
@@ -506,16 +566,17 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             }
             // display caret
             textfield1.getCaret().setVisible(true);
+            textfield2.setText("");
         }
 
         //shift
         if(e.getSource() == shift) {
             if(is_shift_pressed == false) {
-                textfield3.setText("   S");
+                textfield3.setText("   S     "+trig_x);
                 is_shift_pressed = true;
             }
             else {
-                textfield3.setText("");
+                textfield3.setText("         "+trig_x);
                 is_shift_pressed = false;
             }
         }
@@ -967,7 +1028,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
 
         }
         if(is_shift_pressed == false){
-            textfield3.setText("");
+            textfield3.setText("         "+trig_x);
         }
     }
 }
