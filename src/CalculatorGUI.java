@@ -356,7 +356,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         reciprocate_function.setBorder(BorderFactory.createLineBorder(Color.black));
         // Shift function of reciprocate function
         JTextField factorial = new JTextField();
-        factorial.setBounds(98, 325, 33, 12);
+        factorial.setBounds(175, 332, 33, 12);
         factorial.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
         factorial.setVisible(true);        // determines if the textfield is visible
         factorial.setFont(font2);      // determines the font to be used by the textfield
