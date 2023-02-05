@@ -10,7 +10,7 @@ import java.text.DecimalFormat;     // To round a number to a certain number of 
 public class CalculatorGUI implements java.awt.event.ActionListener {
 
     JFrame frame;       // To create a main window where components like labels, buttons, textfields are added to create a GUI
-	JTextField textfield1, textfield2;      // Areas where text is displayed on the GUI
+	JTextField textfield1, textfield2, textfield3;      // Areas where text is displayed on the GUI
     JPanel panel, panel_2, panel_3;     // To provide a container class to attach components like JButton
     JButton zero, one, two, three, four, five, six, seven, eight, nine, 
             add, divide, multiply, minus, del, ac, equalto, dot, multiply_tenx, 
@@ -64,14 +64,14 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         textfield2.setBorder(BorderFactory.createMatteBorder(0, 10, 10, 10, Color.GRAY));      // Determine the size and color of the border
         textfield2.setHorizontalAlignment(JTextField.RIGHT);        // Sets the alignment of the text on the textfield to the right
 
-        JTextField textfield3 = new JTextField();
+        textfield3 = new JTextField();
         textfield3.setBounds(25, 33, 300, 12);
         textfield3.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
         textfield3.setVisible(true);        // determines if the textfield is visible
         textfield3.setFont(font2);      // determines the font to be used by the textfield
         textfield3.setBackground(Color.GRAY);      // sets the background of the textfield to be gray
         textfield3.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY));      // Determine the size and color of the border
-        textfield3.setText("   S");
+        textfield3.setText("");
         textfield3.setForeground(Color.BLACK);
         frame.add(textfield3);
 
@@ -460,6 +460,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
     boolean is_exponential_button_pressed = false;
     int num_of_times_square_button_pressed = 0;
     int num_of_times_exponential_button_pressed = 0;
+    boolean is_shift_pressed = false;
     
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -505,6 +506,18 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             }
             // display caret
             textfield1.getCaret().setVisible(true);
+        }
+
+        //shift
+        if(e.getSource() == shift) {
+            if(is_shift_pressed == false) {
+                textfield3.setText("   S");
+                is_shift_pressed = true;
+            }
+            else {
+                textfield3.setText("");
+                is_shift_pressed = false;
+            }
         }
 
         if(e.getSource() == dot) {
@@ -669,7 +682,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             textfield1.getCaret().setVisible(true);
         }
 
-        if(e.getSource() == tan_function) {
+        if(e.getSource() == tan_function && is_shift_pressed == false) {
             if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
                 textfield1.setText( "ANS");
                 textfield2.setText("");
@@ -679,7 +692,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             textfield1.getCaret().setVisible(true);
         }
 
-        if(e.getSource() == arctan_function) {
+        if(e.getSource() ==  tan_function && is_shift_pressed == true) {
             if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
                 textfield1.setText( "ANS");
                 textfield2.setText("");
@@ -687,6 +700,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             }
             textfield1.setText(textfield1.getText().concat("arctan("));
             textfield1.getCaret().setVisible(true);
+            is_shift_pressed = false;
         }
 
         if(e.getSource() == log_function) {
@@ -950,6 +964,10 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             textfield2.setText(result_in_string);
             multiply_tenx_pressed = false;
             textfield1.getCaret().setVisible(false);
+
+        }
+        if(is_shift_pressed == false){
+            textfield3.setText("");
         }
     }
 }
