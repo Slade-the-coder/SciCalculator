@@ -71,26 +71,25 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         textfield2.setHorizontalAlignment(JTextField.RIGHT);        // Sets the alignment of the text on the textfield to the right
 
         // Third TextField, to display indications as to if the shift button has been clicked or what type of 𝓍-value is being used by the trigonometric functions
-        textfield3 = new JTextField();
-        textfield3.setBounds(25, 33, 300, 12);
+        textfield3 = new JTextField();      // assigning a variable to a new object of JTextField
+        textfield3.setBounds(25, 33, 300, 12);      // Determines the dimensions of the textfield and where it will be on the Contentpane 
         textfield3.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
         textfield3.setVisible(true);        // determines if the textfield is visible
         textfield3.setFont(font2);      // determines the font to be used by the textfield
         textfield3.setBackground(Color.GRAY);      // sets the background of the textfield to be gray
         textfield3.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.GRAY));      // Determine the size and colour of the border
-        textfield3.setText("");
         textfield3.setForeground(Color.BLACK);
-        frame.add(textfield3);
+        frame.add(textfield3);      // Adds the textfield to the Contentpane
 
         // Fourth TextField, just used as an empty white space to block the black space between the first TextField and the second TextField
-        JTextField textfield4 = new JTextField();
-        textfield4.setBounds(25, 75, 300, 35);
+        JTextField textfield4 = new JTextField();       // assigning a variable to a new object of JTextField
+        textfield4.setBounds(25, 75, 300, 35);      // Determines the dimensions of the textfield and where it will be on the Contentpane 
         textfield4.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
         textfield4.setVisible(true);        // determines if the textfield is visible
         textfield4.setFont(font1);      // determines the font to be used by the textfield
         textfield4.setBackground(Color.WHITE);      // sets the background of the textfield to be white
         textfield4.setBorder(BorderFactory.createMatteBorder(0, 10, 0, 10, Color.GRAY));      // Determine the size and colour of the border
-        frame.add(textfield4);
+        frame.add(textfield4);      // Adds the textfield to the Contentpane
 
         panel = new JPanel();       // assigning a variable to a new object of JPanel
         panel.setBounds(20,450,300,170);        // Determines the dimensions of the panel and where it will be on the Contentpane(window content)
@@ -116,13 +115,13 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         constants.setForeground(Color.getHSBColor(41, 26, 64));     // Sets the colour of the foreground, which is the colour of the text              
         frame.add(constants);       // Adds the textfield to the frame(Contentpane or window content)
 
-        add = new JButton("+");     // assigns the variable to a new object of JButton with the text "+"
+        add = new JButton("+");     // assigns the variable to a new object of JButton with the text "+" as it's title
         add.setBounds(100, 100, 85, 50);        // Determines the dimensions of the button and where it will be on the Contentpane          
         add.addActionListener(this);     // Adds an actionlistener to the button which monitors when the button is clicked    
         add.setBackground(Color.WHITE);      // Sets the colour of the button to white
         add.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));     // Determines the border of the buttons, it's dimensions and colour
 
-        divide = new JButton("÷");      // assigns the variable to a new object of JButton with the text "÷"
+        divide = new JButton("÷");      // assigns the variable to a new object of JButton with the text "÷" as it's title
         divide.setBounds(100, 100, 85, 50);     // Determines the dimensions of the button and where it will be on the Contentpane
         divide.addActionListener(this);     // Adds an actionlistener to the button which monitors when the button is clicked
         divide.setBackground(Color.WHITE);    // Sets the colour of the button to white  
@@ -139,13 +138,13 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         combination.setForeground(Color.getHSBColor(41, 26, 64));
         frame.add(combination);
 
-        minus = new JButton("-");       // assigns the variable to a new object of JButton with the text "-"
+        minus = new JButton("-");       // assigns the variable to a new object of JButton with the text "-" as it's title
         minus.setBounds(100, 100, 85, 50);      // Determines the dimensions of the button and where it will be on the Contentpane      
         minus.addActionListener(this);      // Adds an actionlistener to the button which monitors when the button is clicked
         minus.setBackground(Color.WHITE);       // Sets the colour of the button to white
         minus.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));      // Determines the border of the buttons, it's dimensions and colour
 
-        multiply = new JButton("x");        // assigns the variable to a new object of JButton with the text "x"
+        multiply = new JButton("x");        // assigns the variable to a new object of JButton with the text "x" as it's title
         multiply.setBounds(100, 100, 85, 50);       // Determines the dimensions of the button and where it will be on the Contentpane
         multiply.addActionListener(this);       // Adds an actionlistener to the button which monitors when the button is clicked
         multiply.setBackground(Color.WHITE);        // Sets the colour of the button to white
@@ -162,40 +161,40 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         permutation.setForeground(Color.getHSBColor(41, 26, 64));
         frame.add(permutation);
 
-        equalto = new JButton("=");     // assigns the variable to a new object of JButton with the text "="
+        equalto = new JButton("=");     // assigns the variable to a new object of JButton with the text "=" as it's title
         equalto.setBounds(100, 100, 85, 50);        // Determines the dimensions of the button and where it will be on the Contentpane
         equalto.addActionListener(this);        // Adds an actionlistener to the button which monitors when the button is clicked
         equalto.setBackground(Color.WHITE);     // Sets the colour of the button to white
         equalto.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));        // Creates a Border around the button 
 
-        del = new JButton("DEL");       // assigns the variable to a new object of JButton with the text "DEL"
+        del = new JButton("DEL");       // assigns the variable to a new object of JButton with the text "DEL" as it's title
         del.setBounds(100, 100, 85, 50);        // Determines the dimensions of the button and where it will be on the Contentpane
         del.addActionListener(this);        // Adds an actionlistener to the button which monitors when the button is clicked
         del.setBackground(new Color(70, 90, 177));      // Sets the colour of the button to specific variant of blue
         del.setForeground(Color.WHITE);     // Set the colour of the text on the button to white     
         del.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));        // Creates a Border around the button
 
-        ac = new JButton("AC");
-        ac.setBounds(100, 100, 85, 50);
-        ac.addActionListener(this);
+        ac = new JButton("AC");     // assigns the variable to a new object of JButton with the text "AC" as it's title
+        ac.setBounds(100, 100, 85, 50);     // Determines the dimensions of the button and where it will be on the Contentpane
+        ac.addActionListener(this);     // Adds an actionlistener to the button which monitors when the button is clicked
         ac.setBackground(new Color(70, 90, 177));       // Sets the colour of the button to specific variant of blue
-        ac.setForeground(Color.WHITE);
-        ac.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        ac.setForeground(Color.WHITE);      // Set the colour of the text on the button to white
+        ac.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));     // Creates a Border around the button
 
-        dot = new JButton(".");
-        dot.setBounds(100, 100, 85, 50);
-        dot.addActionListener(this);
-        dot.setBackground(Color.WHITE);
-        dot.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        dot = new JButton(".");     // assigns the variable to a new object of JButton with the text "." as it's title
+        dot.setBounds(100, 100, 85, 50);        // Determines the dimensions of the button and where it will be on the Contentpane
+        dot.addActionListener(this);        // Adds an actionlistener to the button which monitors when the button is clicked
+        dot.setBackground(Color.WHITE);     // Set the colour of the text on the button to white
+        dot.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));        // Creates a Border around the button
 
-        multiply_ten_to_n = new JButton("x10ⁿ");
-        multiply_ten_to_n.setBounds(100, 100, 85, 50);
-        multiply_ten_to_n.addActionListener(this);
-        multiply_ten_to_n.setBackground(Color.WHITE);
-        multiply_ten_to_n.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        multiply_ten_to_n = new JButton("x10ⁿ");        // assigns the variable to a new object of JButton with the text "x10ⁿ" as it's title
+        multiply_ten_to_n.setBounds(100, 100, 85, 50);      // Determines the dimensions of the button and where it will be on the Contentpane
+        multiply_ten_to_n.addActionListener(this);      // Adds an actionlistener to the button which monitors when the button is clicked
+        multiply_ten_to_n.setBackground(Color.WHITE);       // Set the colour of the text on the button to white
+        multiply_ten_to_n.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));      // Creates a Border around the button
         // Shift function of multiply tenx button
         JTextField pie_symbol = new JTextField();
-        pie_symbol.setBounds(145, 574, 33, 12);
+        pie_symbol.setBounds(145, 574, 33, 12);     // Determines the dimensions of the textfield and where it will be on the Contentpane
         pie_symbol.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
         pie_symbol.setVisible(true);        // determines if the textfield is visible
         pie_symbol.setFont(font2);      // determines the font to be used by the textfield
@@ -205,11 +204,11 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         pie_symbol.setForeground(Color.getHSBColor(41, 26, 64));
         frame.add(pie_symbol);
 
-        ans_button = new JButton("ANS");
-        ans_button.setBounds(100, 100, 85, 50);
-        ans_button.addActionListener(this);
-        ans_button.setBackground(Color.WHITE);
-        ans_button.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
+        ans_button = new JButton("ANS");        // assigns the variable to a new object of JButton with the text "x10ⁿ" as it's title
+        ans_button.setBounds(100, 100, 85, 50);     // Determines the dimensions of the button and where it will be on the Contentpane
+        ans_button.addActionListener(this);     // Adds an actionlistener to the button which monitors when the button is clicked
+        ans_button.setBackground(Color.WHITE);      // Set the colour of the text on the button to white
+        ans_button.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));     // Creates a Border around the button
         // Shift function of ans button
         JTextField percentage_symbol = new JTextField();
         percentage_symbol.setBounds(227, 574, 33, 12);
@@ -222,76 +221,77 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         percentage_symbol.setForeground(Color.getHSBColor(41, 26, 64));
         frame.add(percentage_symbol);
 
+        // Add the buttons to the first panel
         panel.add(num_buttons[7]); panel.add(num_buttons[8]); panel.add(num_buttons[9]); panel.add(del); panel.add(ac); 
         panel.add(num_buttons[4]); panel.add(num_buttons[5]); panel.add(num_buttons[6]); panel.add(multiply); panel.add(divide);
         panel.add(num_buttons[1]); panel.add(num_buttons[2]); panel.add(num_buttons[3]); panel.add(add); panel.add(minus); 
         panel.add(num_buttons[0]); panel.add(dot); panel.add(multiply_ten_to_n); panel.add(ans_button); panel.add(equalto);
 
-        panel_2 = new JPanel();
-        panel_2.setBounds(20,253,300,170);
-        panel_2.setBackground(Color.black);
-        panel_2.setLayout(new GridLayout(4, 6, 10, 10));
+        panel_2 = new JPanel();     // assigning a variable to a new object of JPanel
+        panel_2.setBounds(20,253,300,170);      // Determines the dimensions of the panel and where it will be on the Contentpane(window content)
+        panel_2.setBackground(Color.black);     // Sets the background of the panel to black     
+        panel_2.setLayout(new GridLayout(4, 4, 10, 10));        // Determines the layout of the panel and the space between buttons
         
-        left_bracket = new JButton("(");
-        left_bracket.setBounds(100, 100, 85, 85);
-        left_bracket.addActionListener(this);
-        left_bracket.setBackground(new Color(32, 32, 32));
-        left_bracket.setForeground(Color.WHITE);
-        left_bracket.setBorder(BorderFactory.createLineBorder(Color.black));
+        left_bracket = new JButton("(");        // assigns the variable to a new object of JButton with the text "(" as it's title
+        left_bracket.setBounds(100, 100, 85, 85);       // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        left_bracket.addActionListener(this);       // Adds an actionlistener to the button which monitors when the button is clicked
+        left_bracket.setBackground(new Color(32, 32, 32));      // Sets the colour of the button to specific variant of black grey
+        left_bracket.setForeground(Color.WHITE);        // Set the colour of the text on the button to white           
+        left_bracket.setBorder(BorderFactory.createLineBorder(Color.black));        // Creates a black Border around the button
         // Shift function of left bracket
-        JTextField modulus = new JTextField();
-        modulus.setBounds(99, 332, 33, 12);
+        JTextField modulus = new JTextField();      // assigns the JTextField variable to a new object of JTextField
+        modulus.setBounds(99, 332, 33, 12);     // Determines the dimensions of the textfield and where it will be on the Contentpane(window content)
         modulus.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
         modulus.setVisible(true);        // determines if the textfield is visible
         modulus.setFont(font2);      // determines the font to be used by the textfield
         modulus.setBackground(Color.BLACK);      // sets the background of the textfield to be white
-        modulus.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
-        modulus.setText("abs");
-        modulus.setForeground(Color.getHSBColor(41, 26, 64));
-        frame.add(modulus);
+        modulus.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));         // Creates a black Border around the textfield
+        modulus.setText("abs");     // Sets the textfield to have the text "abs"
+        modulus.setForeground(Color.getHSBColor(41, 26, 64));       // Sets the colour of the text in the textfield to yellow       
+        frame.add(modulus);     // textfield is added to the Contentpane(window content)
 
-        right_bracket = new JButton(")");
-        right_bracket.setBounds(100, 100, 85, 85);
-        right_bracket.addActionListener(this);
-        right_bracket.setBackground(new Color(32, 32, 32));
-        right_bracket.setForeground(Color.WHITE);
-        right_bracket.setBorder(BorderFactory.createLineBorder(Color.black));
+        right_bracket = new JButton(")");       // assigns the variable to a new object of JButton with the text ")" as it's title
+        right_bracket.setBounds(100, 100, 85, 85);      // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        right_bracket.addActionListener(this);      // Adds an actionlistener to the button which monitors when the button is clicked
+        right_bracket.setBackground(new Color(32, 32, 32));     // Sets the colour of the button to specific variant of black grey     
+        right_bracket.setForeground(Color.WHITE);       // Set the colour of the text on the button to white       
+        right_bracket.setBorder(BorderFactory.createLineBorder(Color.black));       // Creates a black Border around the button
 
-        x_variable = new JButton("𝓍");
-        x_variable.setBounds(100, 100, 85, 85);
-        x_variable.addActionListener(this);
-        x_variable.setBackground(new Color(32, 32, 32));
-        x_variable.setForeground(Color.WHITE);
-        x_variable.setBorder(BorderFactory.createLineBorder(Color.black));
+        x_variable = new JButton("𝓍");      // assigns the variable to a new object of JButton with the text "𝓍" as it's title
+        x_variable.setBounds(100, 100, 85, 85);     // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        x_variable.addActionListener(this);     // Adds an actionlistener to the button which monitors when the button is clicked
+        x_variable.setBackground(new Color(32, 32, 32));        // Sets the colour of the button to specific variant of black grey
+        x_variable.setForeground(Color.WHITE);      // Set the colour of the text on the button to white 
+        x_variable.setBorder(BorderFactory.createLineBorder(Color.black));      // Creates a black Border around the button
 
-        square_root = new JButton("√n");
-        square_root.setBounds(100, 100, 85, 85);
-        square_root.addActionListener(this);
-        square_root.setBackground(new Color(32, 32, 32));
-        square_root.setForeground(Color.WHITE);
-        square_root.setBorder(BorderFactory.createLineBorder(Color.black));
+        square_root = new JButton("√n");        // assigns the variable to a new object of JButton with the text "√n" as it's title
+        square_root.setBounds(100, 100, 85, 85);         // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        square_root.addActionListener(this);        // Adds an actionlistener to the button which monitors when the button is clicked
+        square_root.setBackground(new Color(32, 32, 32));       // Sets the colour of the button to specific variant of black grey
+        square_root.setForeground(Color.WHITE);     // Set the colour of the text on the button to white
+        square_root.setBorder(BorderFactory.createLineBorder(Color.black));     // Creates a black Border around the button
         // Shift function of square root
         JTextField cube_root = new JTextField();
-        cube_root.setBounds(175, 240, 33, 12);
+        cube_root.setBounds(175, 240, 33, 12);      // assigns the JTextField variable to a new object of JTextField
         cube_root.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
         cube_root.setVisible(true);        // determines if the textfield is visible
         cube_root.setFont(font2);      // determines the font to be used by the textfield
         cube_root.setBackground(Color.BLACK);      // sets the background of the textfield to be white
-        cube_root.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));
-        cube_root.setText("³√n");
-        cube_root.setForeground(Color.getHSBColor(41, 26, 64));
-        frame.add(cube_root);
+        cube_root.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));      // Creates a black Border around the textfield
+        cube_root.setText("³√n");       // Sets the textfield to have the text "³√n"
+        cube_root.setForeground(Color.getHSBColor(41, 26, 64));     // Sets the colour of the text in the textfield to yellow     
+        frame.add(cube_root);       // textfield is added to the Contentpane(window content)
 
         // To indicate the trigonometric default 𝓍-value is in degrees
         trig_x = "D";
         textfield3.setText("         "+trig_x);
 
-        sin_function = new JButton("sin");
-        sin_function.setBounds(100, 100, 85, 85);
-        sin_function.addActionListener(this);
-        sin_function.setBackground(new Color(32, 32, 32));
-        sin_function.setForeground(Color.WHITE);
-        sin_function.setBorder(BorderFactory.createLineBorder(Color.black));
+        sin_function = new JButton("sin");      // assigns the variable to a new object of JButton with the text "sin" as it's title
+        sin_function.setBounds(100, 100, 85, 85);       // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        sin_function.addActionListener(this);       // Adds an actionlistener to the button which monitors when the button is clicked       
+        sin_function.setBackground(new Color(32, 32, 32));      // Sets the colour of the button to specific variant of black grey
+        sin_function.setForeground(Color.WHITE);        // Set the colour of the text on the button to white
+        sin_function.setBorder(BorderFactory.createLineBorder(Color.black));        // Creates a black Border around the button
         // Shift function of sin
         JTextField arcsin_function = new JTextField();
         arcsin_function.setBounds(98, 287, 38, 12);
@@ -305,12 +305,12 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         arcsin_function.setForeground(Color.getHSBColor(41, 26, 64));
         frame.add(arcsin_function);
 
-        cos_function = new JButton("cos");
-        cos_function.setBounds(100, 100, 85, 85);
-        cos_function.addActionListener(this);
-        cos_function.setBackground(new Color(32, 32, 32));
-        cos_function.setForeground(Color.WHITE);
-        cos_function.setBorder(BorderFactory.createLineBorder(Color.black));
+        cos_function = new JButton("cos");      // assigns the variable to a new object of JButton with the text "cos" as it's title
+        cos_function.setBounds(100, 100, 85, 85);       // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        cos_function.addActionListener(this);       // Adds an actionlistener to the button which monitors when the button is clicked       
+        cos_function.setBackground(new Color(32, 32, 32));      // Sets the colour of the button to specific variant of black grey
+        cos_function.setForeground(Color.WHITE);        // Set the colour of the text on the button to white
+        cos_function.setBorder(BorderFactory.createLineBorder(Color.black));        // Creates a black Border around the button
         // Shift function of cos
         JTextField arccos_function = new JTextField();
         arccos_function.setBounds(175, 287, 43, 12);
@@ -324,12 +324,12 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         frame.add(arccos_function);
         
 
-        tan_function = new JButton("tan");
-        tan_function.setBounds(100, 100, 85, 85);
-        tan_function.addActionListener(this);
-        tan_function.setBackground(new Color(32, 32, 32));
-        tan_function.setForeground(Color.WHITE);
-        tan_function.setBorder(BorderFactory.createLineBorder(Color.black));        
+        tan_function = new JButton("tan");      // assigns the variable to a new object of JButton with the text "tan" as it's title
+        tan_function.setBounds(100, 100, 85, 85);       // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        tan_function.addActionListener(this);       // Adds an actionlistener to the button which monitors when the button is clicked
+        tan_function.setBackground(new Color(32, 32, 32));      // Sets the colour of the button to specific variant of black grey
+        tan_function.setForeground(Color.WHITE);        // Set the colour of the text on the button to white
+        tan_function.setBorder(BorderFactory.createLineBorder(Color.black));        // Creates a black Border around the button            
         // Shift function of tan
         JTextField arctan_function = new JTextField();
         arctan_function.setBounds(252, 287, 38, 12);
@@ -342,26 +342,26 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         arctan_function.setForeground(Color.getHSBColor(41, 26, 64));
         frame.add(arctan_function);
 
-        sto_button = new JButton("STO");
-        sto_button.setBounds(100, 100, 85, 85);
-        sto_button.addActionListener(this);
-        sto_button.setBackground(new Color(32, 32, 32));
-        sto_button.setForeground(Color.WHITE);
-        sto_button.setBorder(BorderFactory.createLineBorder(Color.black));   
+        sto_button = new JButton("STO");        // assigns the variable to a new object of JButton with the text "STO" as it's title
+        sto_button.setBounds(100, 100, 85, 85);     // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        sto_button.addActionListener(this);     // Adds an actionlistener to the button which monitors when the button is clicked
+        sto_button.setBackground(new Color(32, 32, 32));        // Sets the colour of the button to specific variant of black grey
+        sto_button.setForeground(Color.WHITE);      // Set the colour of the text on the button to white
+        sto_button.setBorder(BorderFactory.createLineBorder(Color.black));      // Creates a black Border around the button       
 
-        log_function = new JButton("log₍ₐ₎(n)");
-        log_function.setBounds(100, 100, 85, 85);
-        log_function.addActionListener(this);
-        log_function.setBackground(new Color(32, 32, 32));
-        log_function.setForeground(Color.WHITE);
-        log_function.setBorder(BorderFactory.createLineBorder(Color.black));
+        log_function = new JButton("log₍ₐ₎(n)");        // assigns the variable to a new object of JButton with the text "log₍ₐ₎(n)" as it's title
+        log_function.setBounds(100, 100, 85, 85);       // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        log_function.addActionListener(this);       // Adds an actionlistener to the button which monitors when the button is clicked       
+        log_function.setBackground(new Color(32, 32, 32));      // Sets the colour of the button to specific variant of black grey
+        log_function.setForeground(Color.WHITE);        // Set the colour of the text on the button to white        
+        log_function.setBorder(BorderFactory.createLineBorder(Color.black));        // Creates a black Border around the button
 
-        log_ten_function = new JButton("log₁₀(n)");
-        log_ten_function.setBounds(100, 100, 85, 85);
-        log_ten_function.addActionListener(this);
-        log_ten_function.setBackground(new Color(32, 32, 32));
-        log_ten_function.setForeground(Color.WHITE);
-        log_ten_function.setBorder(BorderFactory.createLineBorder(Color.black));
+        log_ten_function = new JButton("log₁₀(n)");     // assigns the variable to a new object of JButton with the text "log₁₀(n)" as it's title
+        log_ten_function.setBounds(100, 100, 85, 85);       // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        log_ten_function.addActionListener(this);       // Adds an actionlistener to the button which monitors when the button is clicked
+        log_ten_function.setBackground(new Color(32, 32, 32));      // Sets the colour of the button to specific variant of black grey      
+        log_ten_function.setForeground(Color.WHITE);        // Set the colour of the text on the button to white           
+        log_ten_function.setBorder(BorderFactory.createLineBorder(Color.black));        // Creates a black Border around the button        
         // Shift function of log₁₀(n)
         JTextField ten_raised_n = new JTextField();
         ten_raised_n.setBounds(252, 240, 38, 12);
@@ -374,12 +374,12 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         ten_raised_n.setForeground(Color.getHSBColor(41, 26, 64));
         frame.add(ten_raised_n);
 
-        ln_function = new JButton("ln(n)");
-        ln_function.setBounds(100, 100, 85, 85);
-        ln_function.addActionListener(this);
-        ln_function.setBackground(new Color(32, 32, 32));
-        ln_function.setForeground(Color.WHITE);
-        ln_function.setBorder(BorderFactory.createLineBorder(Color.black));        
+        ln_function = new JButton("ln(n)");     // assigns the variable to a new object of JButton with the text "ln(n)" as it's title
+        ln_function.setBounds(100, 100, 85, 85);        // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        ln_function.addActionListener(this);        // Adds an actionlistener to the button which monitors when the button is clicked
+        ln_function.setBackground(new Color(32, 32, 32));       // Sets the colour of the button to specific variant of black grey
+        ln_function.setForeground(Color.WHITE);     // Set the colour of the text on the button to white
+        ln_function.setBorder(BorderFactory.createLineBorder(Color.black));     // Creates a black Border around the button             
         // Shift function of ln(n)
         JTextField eulers_number = new JTextField();
         eulers_number.setBounds(21, 287, 38, 12);
@@ -393,26 +393,26 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         frame.add(eulers_number);
         
 
-        exponential = new JButton("𝓍ⁿ");
-        exponential.setBounds(100, 100, 85, 85);
-        exponential.addActionListener(this);
-        exponential.setBackground(new Color(32, 32, 32));
-        exponential.setForeground(Color.WHITE);
-        exponential.setBorder(BorderFactory.createLineBorder(Color.black));
+        exponential = new JButton("𝓍ⁿ");        // assigns the variable to a new object of JButton with the text "𝓍ⁿ" as it's title
+        exponential.setBounds(100, 100, 85, 85);        // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        exponential.addActionListener(this);        // Adds an actionlistener to the button which monitors when the button is clicked
+        exponential.setBackground(new Color(32, 32, 32));       // Sets the colour of the button to specific variant of black grey
+        exponential.setForeground(Color.WHITE);     // Set the colour of the text on the button to white     
+        exponential.setBorder(BorderFactory.createLineBorder(Color.black));     // Creates a black Border around the button
 
-        square_number = new JButton("𝓍²");
-        square_number.setBounds(100, 100, 85, 85);
-        square_number.addActionListener(this);
-        square_number.setBackground(new Color(32, 32, 32));
-        square_number.setForeground(Color.WHITE);
-        square_number.setBorder(BorderFactory.createLineBorder(Color.black));
+        square_number = new JButton("𝓍²");      // assigns the variable to a new object of JButton with the text "𝓍²" as it's title
+        square_number.setBounds(100, 100, 85, 85);      // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        square_number.addActionListener(this);      // Adds an actionlistener to the button which monitors when the button is clicked
+        square_number.setBackground(new Color(32, 32, 32));     // Sets the colour of the button to specific variant of black grey
+        square_number.setForeground(Color.WHITE);       // Set the colour of the text on the button to white       
+        square_number.setBorder(BorderFactory.createLineBorder(Color.black));       // Creates a black Border around the button
 
-        reciprocate_function = new JButton("𝓍⁻¹");
-        reciprocate_function.setBounds(100, 100, 85, 85);
-        reciprocate_function.addActionListener(this);
-        reciprocate_function.setBackground(new Color(32, 32, 32));
-        reciprocate_function.setForeground(Color.WHITE);
-        reciprocate_function.setBorder(BorderFactory.createLineBorder(Color.black));
+        reciprocate_function = new JButton("𝓍⁻¹");      // assigns the variable to a new object of JButton with the text "𝓍⁻¹" as it's title
+        reciprocate_function.setBounds(100, 100, 85, 85);       // Determines the dimensions of the button and where it will be on the Contentpane(window content)       
+        reciprocate_function.addActionListener(this);       // Adds an actionlistener to the button which monitors when the button is clicked
+        reciprocate_function.setBackground(new Color(32, 32, 32));      // Sets the colour of the button to specific variant of black grey
+        reciprocate_function.setForeground(Color.WHITE);        // Set the colour of the text on the button to white
+        reciprocate_function.setBorder(BorderFactory.createLineBorder(Color.black));        // Creates a black Border around the button
         // Shift function of reciprocate function
         JTextField factorial = new JTextField();
         factorial.setBounds(21, 379, 33, 11);
@@ -425,12 +425,12 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         factorial.setForeground(Color.getHSBColor(41, 26, 64));
         frame.add(factorial);
 
-        calc_function = new JButton("CALC");
-        calc_function.setBounds(100, 100, 85, 85);
-        calc_function.addActionListener(this);
-        calc_function.setBackground(new Color(32, 32, 32));
-        calc_function.setForeground(Color.WHITE);
-        calc_function.setBorder(BorderFactory.createLineBorder(Color.black));
+        calc_function = new JButton("CALC");        // assigns the variable to a new object of JButton with the text "CALC" as it's title
+        calc_function.setBounds(100, 100, 85, 85);      // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        calc_function.addActionListener(this);      // Adds an actionlistener to the button which monitors when the button is clicked
+        calc_function.setBackground(new Color(32, 32, 32));     // Sets the colour of the button to specific variant of black grey
+        calc_function.setForeground(Color.WHITE);       // Set the colour of the text on the button to white
+        calc_function.setBorder(BorderFactory.createLineBorder(Color.black));       // Creates a black Border around the button
         // Shift function of CALC
         JTextField solve_x = new JTextField();
         solve_x.setBounds(23, 242, 37, 12);
@@ -443,79 +443,84 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         solve_x.setForeground(Color.getHSBColor(41, 26, 64));
         frame.add(solve_x);
 
-        abs = new JButton("abs");
-        abs.setBounds(100, 100, 85, 85);
-        abs.addActionListener(this);
-        abs.setBackground(new Color(32, 32, 32));
-        abs.setForeground(Color.WHITE);
-        abs.setBorder(BorderFactory.createLineBorder(Color.black)); 
+        abs = new JButton("abs");       // assigns the variable to a new object of JButton with the text "abs" as it's title
+        abs.setBounds(100, 100, 85, 85);        // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        abs.addActionListener(this);        // Adds an actionlistener to the button which monitors when the button is clicked
+        abs.setBackground(new Color(32, 32, 32));       // Sets the colour of the button to specific variant of black grey
+        abs.setForeground(Color.WHITE);     // Set the colour of the text on the button to white
+        abs.setBorder(BorderFactory.createLineBorder(Color.black));     // Creates a black Border around the button 
 
+        // Add buttons to the second panel
         panel_2.add(calc_function); panel_2.add(x_variable); panel_2.add(square_root); panel_2.add(log_ten_function); panel_2.add(ln_function);  
         panel_2.add(sin_function); panel_2.add(cos_function); panel_2.add(tan_function); panel_2.add(log_function); panel_2.add(left_bracket); 
         panel_2.add(right_bracket); panel_2.add(sto_button); panel_2.add(reciprocate_function); panel_2.add(square_number); panel_2.add(exponential); panel_2.add(abs);
 
-        panel_3 = new JPanel();
-        panel_3.setBounds(20,150,300,60);
-        panel_3.setBackground(Color.black);
-        panel_3.setLayout(new GridLayout(1, 1));
+        panel_3 = new JPanel();     // assigning a variable to a new object of JPanel
+        panel_3.setBounds(20,150,300,60);       // Determines the dimensions of the panel and where it will be on the Contentpane(window content)
+        panel_3.setBackground(Color.black);     // Sets the background of the panel to black
+        panel_3.setLayout(new GridLayout(1, 1));        // Determines the layout of the panel
 
         Font font3 = new Font("Arial", Font.BOLD, 24);
 
-        left_direction = new JButton();
-        left_direction.setFont(font3);
-        left_direction.setText("<");        
-        left_direction.setBounds(100, 100, 85, 85);
-        left_direction.addActionListener(this);
-        left_direction.setBackground(new Color(192, 192, 192));
-        left_direction.setForeground(Color.WHITE);
-        left_direction.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        left_direction = new JButton();     // assigns the variable to a new object of JButton
+        left_direction.setFont(font3);      // sets the font of the text on the button
+        left_direction.setText("<");        // sets the text "<" as the title of the button, so as to make the text bold
+        left_direction.setBounds(100, 100, 85, 85);     // Determines the dimensions of the button and where it will be on the Contentpane(window content)     
+        left_direction.addActionListener(this);     // Adds an actionlistener to the button which monitors when the button is clicked
+        left_direction.setBackground(new Color(192, 192, 192));     // Sets the colour of the button to silver
+        left_direction.setForeground(Color.WHITE);      // Set the colour of the text on the button to white
+        left_direction.setBorder(BorderFactory.createLineBorder(Color.black, 5));       // Creates a black Border around the button 
 
-        right_direction = new JButton();
-        right_direction.setFont(font3);
-        right_direction.setText(">");   
-        right_direction.setBounds(100, 100, 85, 85);
-        right_direction.addActionListener(this);
-        right_direction.setBackground(new Color(192, 192, 192));
-        right_direction.setForeground(Color.WHITE);
-        right_direction.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        right_direction = new JButton();        // assigns the variable to a new object of JButton
+        right_direction.setFont(font3);     // sets the font of the text on the button, so as to make the text bold
+        right_direction.setText(">");       // sets the text ">" as the title of the button   
+        right_direction.setBounds(100, 100, 85, 85);        // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        right_direction.addActionListener(this);        // Adds an actionlistener to the button which monitors when the button is clicked
+        right_direction.setBackground(new Color(192, 192, 192));        // Sets the colour of the button to silver
+        right_direction.setForeground(Color.WHITE);     // Set the colour of the text on the button to white
+        right_direction.setBorder(BorderFactory.createLineBorder(Color.black, 5));      // Creates a black Border around the button
 
-        shift = new JButton("shift");
-        shift.setBounds(100, 100, 85, 85);
-        shift.addActionListener(this);
-        shift.setBackground(new Color(192, 192, 192));
-        shift.setForeground(Color.WHITE);
-        shift.setBorder(BorderFactory.createLineBorder(Color.black, 5));
-        shift.setForeground(Color.getHSBColor(41, 26, 64));
+        shift = new JButton("shift");       // assigns the variable to a new object of JButton with the text "shift" as it's title
+        shift.setBounds(100, 100, 85, 85);      // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        shift.addActionListener(this);      // Adds an actionlistener to the button which monitors when the button is clicked
+        shift.setBackground(new Color(192, 192, 192));      // Sets the colour of the button to silver      
+        shift.setForeground(Color.getHSBColor(41, 26, 64));       // Set the colour of the text on the button to yellow
+        shift.setBorder(BorderFactory.createLineBorder(Color.black, 5));        // Creates a black Border around the button        
 
-        alpha = new JButton("alpha");
-        alpha.setBounds(100, 100, 85, 85);
-        alpha.addActionListener(this);
-        alpha.setBackground(new Color(192, 192, 192));
-        alpha.setForeground(Color.WHITE);
-        alpha.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        alpha = new JButton("alpha");       // assigns the variable to a new object of JButton with the text "alpha" as it's title
+        alpha.setBounds(100, 100, 85, 85);      // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        alpha.addActionListener(this);      // Adds an actionlistener to the button which monitors when the button is clicked
+        alpha.setBackground(new Color(192, 192, 192));      // Sets the colour of the button to silver 
+        alpha.setForeground(Color.WHITE);       // Set the colour of the text on the button to white
+        alpha.setBorder(BorderFactory.createLineBorder(Color.black, 5));        // Creates a black Border around the button        
         
-        menu = new JButton("menu");
-        menu.setBounds(100, 100, 85, 85);
-        menu.addActionListener(this);
-        menu.setBackground(new Color(192, 192, 192));
-        menu.setForeground(Color.WHITE);
-        menu.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        menu = new JButton("menu");     // assigns the variable to a new object of JButton with the text "menu" as it's title
+        menu.setBounds(100, 100, 85, 85);       // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        menu.addActionListener(this);       // Adds an actionlistener to the button which monitors when the button is clicked
+        menu.setBackground(new Color(192, 192, 192));       // Sets the colour of the button to silver
+        menu.setForeground(Color.WHITE);        // Set the colour of the text on the button to white
+        menu.setBorder(BorderFactory.createLineBorder(Color.black, 5));     // Creates a black Border around the button
 
-        setupButton = new JButton("setup");
-        setupButton.setBounds(100, 100, 85, 85);
-        setupButton.addActionListener(this);
-        setupButton.setBackground(new Color(192, 192, 192));
-        setupButton.setForeground(Color.WHITE);
-        setupButton.setBorder(BorderFactory.createLineBorder(Color.black, 5));
+        setupButton = new JButton("setup");     // assigns the variable to a new object of JButton with the text "menu" as it's title
+        setupButton.setBounds(100, 100, 85, 85);        // Determines the dimensions of the button and where it will be on the Contentpane(window content)
+        setupButton.addActionListener(this);        // Adds an actionlistener to the button which monitors when the button is clicked
+        setupButton.setBackground(new Color(192, 192, 192));        // Sets the colour of the button to silver
+        setupButton.setForeground(Color.WHITE);     // Set the colour of the text on the button to white
+        setupButton.setBorder(BorderFactory.createLineBorder(Color.black, 5));      // Creates a black Border around the button
 
+        // Add buttons to the second panel
         panel_3.add(shift); panel_3.add(alpha);panel_3.add(left_direction); panel_3.add(right_direction); panel_3.add(menu); panel_3.add(setupButton);
 
-        frame.add(panel);
-        frame.add(panel_2);
-        frame.add(panel_3);
-        frame.add(textfield1);
-        frame.add(textfield2);
+        // Add the panels to the frame 
+        frame.add(panel); frame.add(panel_2); frame.add(panel_3);
+
+        // Add the textfields to the frame
+        frame.add(textfield1); frame.add(textfield2);
+
+        // Set the frame to be visible
         frame.setVisible(true);
+
+        // Set the panel to be visible
         panel.setVisible(true);
          
     }
@@ -523,17 +528,17 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
 
     static boolean multiply_ten_to_n_pressed = false;
     boolean is_square_button_pressed = false;
-    boolean is_exponential_button_pressed = false;
+    boolean is_exponential_button_pressed = false;      
     int num_of_times_square_button_pressed = 0;
-    int num_of_times_exponential_button_pressed = 0;
+    int num_of_times_exponential_button_pressed = 0;    
     boolean is_shift_pressed = false;
     
     @Override
     public void actionPerformed(ActionEvent e) {
         for(int i = 0; i < num_buttons.length; i++) {
             if(e.getSource() == num_buttons[i]) {
-                int index = textfield1.getCaretPosition();
-                String temp = textfield1.getText();
+                int index = textfield1.getCaretPosition();      // sets a variable to hold the value of the position where the caret is on the textfield
+                String temp = textfield1.getText();     // sets a variabele to hold the current text in the texfield
 
                 // for log of other numbers...
                 /*if(temp.length() >= 3 &&  temp.substring(temp.length()-3, temp.length()).equals("log")) {
@@ -541,19 +546,19 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
                 }*/
 
                 // to display a number on the screen  
-                if(multiply_ten_to_n_pressed == true) {
-                    textfield1.setText(temp.concat(String.valueOf(superscript[i])));
+                if(multiply_ten_to_n_pressed == true) {     // Checks if the "x10ⁿ" button has been clicked
+                    textfield1.setText(temp.concat(String.valueOf(superscript[i])));        // add superscript numbers to the textfield
                 }
                 else {
-                    if(index >= temp.length()) {
-                        textfield1.setText(temp.substring(0, index) + Integer.toString(i));
+                    if(index >= temp.length()) {        // Checks if the position of the caret is greater that the length of the current text in the textfield
+                        textfield1.setText(temp.substring(0, index) + Integer.toString(i));     // Sets textfield to equal the current text in the textfield concatenated with the nimber clicked
                     }
                     else {
-                        textfield1.setText(temp.substring(0, index) + Integer.toString(i) + temp.substring(index, temp.length()));
-                        textfield1.setCaretPosition(index+1);
+                        textfield1.setText(temp.substring(0, index) + Integer.toString(i) + temp.substring(index, temp.length()));      // Puts the number clicked in between the text in the textfield, where the caret is positioned
+                        textfield1.setCaretPosition(index+1);       // Increments the position of the caret by one
                     }
                 }
-                textfield1.getCaret().setVisible(true);
+                textfield1.getCaret().setVisible(true);     // Sets the caret of the textfield to be visible
             }    
         }
 
