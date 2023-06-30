@@ -52,7 +52,7 @@ class functions extends CalculatorGUI{
 
     public static double arcsin(double value) {
         double angle = 0;
-        for(int i = 0; i < 80; i++) {
+        for(int i = 0; i < 50; i++) {
             double numerator = factorial(2*i);
             numerator *= Math.pow(value, 2*i + 1);
             double denominator = Math.pow(4, i)*Math.pow(factorial(i), 2)*(2*i+1);
@@ -177,7 +177,7 @@ class functions extends CalculatorGUI{
         if(temp_text.contains("-")) {
             // Include more operators later
             if(temp_text.indexOf("-") != 0 && !(temp_text.substring(temp_text.indexOf("-")-1, temp_text.indexOf("-")).equals("x"))) {
-                temp_text = temp_text.replaceAll("-", "+-"); // to allow negative numbers to be distinct from positive numbers
+                temp_text = temp_text.replaceAll("-", "+-");        // to allow negative numbers to be distinct from positive numbers
             }
         }    
         if(temp_text.contains("x10") && multiply_ten_to_n_pressed == true) {

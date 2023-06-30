@@ -238,17 +238,6 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         left_bracket.setBackground(new Color(32, 32, 32));      // Sets the colour of the button to specific variant of black grey
         left_bracket.setForeground(Color.WHITE);        // Set the colour of the text on the button to white           
         left_bracket.setBorder(BorderFactory.createLineBorder(Color.black));        // Creates a black Border around the button
-        // Shift function of left bracket
-        JTextField modulus = new JTextField();      // assigns the JTextField variable to a new object of JTextField
-        modulus.setBounds(99, 332, 33, 12);     // Determines the dimensions of the textfield and where it will be on the Contentpane(window content)
-        modulus.setEditable(false);      // determines if the user can edit the contents of the textfield with the use of a physical or on-screen keyboard
-        modulus.setVisible(true);        // determines if the textfield is visible
-        modulus.setFont(font2);      // determines the font to be used by the textfield
-        modulus.setBackground(Color.BLACK);      // sets the background of the textfield to be white
-        modulus.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.BLACK));         // Creates a black Border around the textfield
-        modulus.setText("abs");     // Sets the textfield to have the text "abs"
-        modulus.setForeground(Color.getHSBColor(41, 26, 64));       // Sets the colour of the text in the textfield to yellow       
-        frame.add(modulus);     // textfield is added to the Contentpane(window content)
 
         right_bracket = new JButton(")");       // assigns the variable to a new object of JButton with the text ")" as it's title
         right_bracket.setBounds(100, 100, 85, 85);      // Determines the dimensions of the button and where it will be on the Contentpane(window content)
@@ -283,7 +272,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         frame.add(cube_root);       // textfield is added to the Contentpane(window content)
 
         // To indicate the trigonometric default 𝓍-value is in degrees
-        trig_x = "D";
+        trig_x = "D"; 
         textfield3.setText("         "+trig_x);
 
         sin_function = new JButton("sin");      // assigns the variable to a new object of JButton with the text "sin" as it's title
@@ -532,13 +521,15 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
     int num_of_times_square_button_pressed = 0;
     int num_of_times_exponential_button_pressed = 0;    
     boolean is_shift_pressed = false;
+    String list_of_numbers = "0123456789";
+    String list_of_numbers_and_operators = "0123456789+x÷-";
     
     @Override
     public void actionPerformed(ActionEvent e) {
         for(int i = 0; i < num_buttons.length; i++) {
-            if(e.getSource() == num_buttons[i]) {
+            if(e.getSource() == num_buttons[i]) {       // Checks what number button has been clicked
                 int index = textfield1.getCaretPosition();      // sets a variable to hold the value of the position where the caret is on the textfield
-                String temp = textfield1.getText();     // sets a variabele to hold the current text in the texfield
+                String temp = textfield1.getText();     // sets a variable to hold the current text in the textfield
 
                 // for log of other numbers...
                 /*if(temp.length() >= 3 &&  temp.substring(temp.length()-3, temp.length()).equals("log")) {
@@ -551,7 +542,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
                 }
                 else {
                     if(index >= temp.length()) {        // Checks if the position of the caret is greater that the length of the current text in the textfield
-                        textfield1.setText(temp.substring(0, index) + Integer.toString(i));     // Sets textfield to equal the current text in the textfield concatenated with the nimber clicked
+                        textfield1.setText(temp.substring(0, index) + Integer.toString(i));     // Sets textfield to equal the current text in the textfield concatenated with the number clicked
                     }
                     else {
                         textfield1.setText(temp.substring(0, index) + Integer.toString(i) + temp.substring(index, temp.length()));      // Puts the number clicked in between the text in the textfield, where the caret is positioned
@@ -563,170 +554,170 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
         }
 
         // direction buttons
-        if(e.getSource() == left_direction) {
-            if(!((textfield1.getText().equals("")) || textfield1.getCaretPosition() == 0)) {
-                textfield1.setCaretPosition(textfield1.getCaretPosition()-1);
+        if(e.getSource() == left_direction) {       // Checks if the left direction button has been clicked
+            if(!((textfield1.getText().equals("")) || textfield1.getCaretPosition() == 0)) {        // Checks if the textfield is not empty or the current caret position is 0
+                textfield1.setCaretPosition(textfield1.getCaretPosition()-1);       // Set the position of the caret to one place to the left on the textfield
             }
             // display caret
-            textfield1.getCaret().setVisible(true);
-            textfield2.setText("");
+            textfield1.getCaret().setVisible(true);     // Sets the caret to be visible
+            textfield2.setText("");     // Sets the text in the solution textfield is be empty
         }
-        if(e.getSource() == right_direction) {
-            if(!((textfield1.getText().equals("")) || textfield1.getCaretPosition() == textfield1.getText().length())) {
-                textfield1.setCaretPosition(textfield1.getCaretPosition()+1);
+        if(e.getSource() == right_direction) {      // Checks if the right direction button has been clicked
+            if(!((textfield1.getText().equals("")) || textfield1.getCaretPosition() == textfield1.getText().length())) {        // Checks if the textfield is not empty or the current caret position is the end of the text
+                textfield1.setCaretPosition(textfield1.getCaretPosition()+1);       // Set the position of the caret to one place to the right on the textfield
             }
             // display caret
-            textfield1.getCaret().setVisible(true);
-            textfield2.setText("");
+            textfield1.getCaret().setVisible(true);     // Sets the caret to be visible
+            textfield2.setText("");     // Sets the text in the solution textfield is be empty
         }
 
         //shift
-        if(e.getSource() == shift) {
-            if(is_shift_pressed == false) {
-                textfield3.setText("   S     "+trig_x);
-                is_shift_pressed = true;
+        if(e.getSource() == shift) {        // Checks if the shift button has been clicked                
+            if(is_shift_pressed == false) {     // Checks if the shift button has been clicked previously
+                textfield3.setText("   S     "+trig_x);     // Adds "   S     " to the textfield at a certain position
+                is_shift_pressed = true;        // sets the variable to hold a true boolean value
             }
             else {
-                textfield3.setText("         "+trig_x);
-                is_shift_pressed = false;
+                textfield3.setText("         "+trig_x);     // Adds "         " to the textfield at a certain position     
+                is_shift_pressed = false;       // sets the variable to hold a true boolean value
             }
         }
 
-        if(e.getSource() == dot) {
-            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
-                textfield1.setText( "");
-                textfield2.setText("");
-                num_operations ++;
+        if(e.getSource() == dot) {      // Checks if the dot button has been clicked      
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {       // Checks if both the textfield1 and textfield2 have texts in them at the current moment and if the number of operations is 1
+                textfield1.setText("");        // Sets textfield1 to be empty
+                textfield2.setText("");         // Sets textfield2 to "" to make it empty
+                num_operations ++;      // Increments the number in the variable by one
             }
-            textfield1.setText(textfield1.getText().concat("."));
+            textfield1.setText(textfield1.getText().concat("."));       // Adds "." to textfield1(also the textfield where the problem is written)
         }
 
-        if(e.getSource() == add) {
-            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
-                textfield1.setText( "ANS");
-                textfield2.setText("");
-                num_operations ++;
-            }
-            // to display "+" on the screen
-            textfield1.setText(textfield1.getText().concat("+"));
-            multiply_ten_to_n_pressed = false;
-        }
-
-        if(e.getSource() == minus) {
-            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
-                textfield1.setText( "ANS");
-                textfield2.setText("");
-                num_operations ++;
+        if(e.getSource() == add) {      // Checks if the add button has been clicked
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {       // Checks if both the textfield1 and textfield2 have texts in them at the current moment and if the number of operations is 1
+                textfield1.setText( "ANS");     // Sets textfield1 to have text "ANS"
+                textfield2.setText("");     // Sets textfield2 to "" to make it empty
+                num_operations ++;      // Increments the number in the variable by one
             }
             // to display "+" on the screen
-            textfield1.setText(textfield1.getText().concat("-"));
-            multiply_ten_to_n_pressed = false;
+            textfield1.setText(textfield1.getText().concat("+"));       // Adds the addition symbol "+" to textfield1
+            multiply_ten_to_n_pressed = false;      // Sets the variable to hold a false boolean value
         }
 
-        if(e.getSource() == multiply && is_shift_pressed == false) {
-            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
-                textfield1.setText( "ANS");
-                textfield2.setText("");
-                num_operations ++;
+        if(e.getSource() == minus) {        // Checks if the minus button has been clicked
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {       // Checks if both the textfield1 and textfield2 have texts in them at the current moment and if the number of operations is 1
+                textfield1.setText( "ANS");     // Sets textfield1 to have text "ANS"
+                textfield2.setText("");     // Sets textfield2 to "" to make it empty
+                num_operations ++;      // Increments the number in the variable by one
+            }
+            // to display "-" on the screen
+            textfield1.setText(textfield1.getText().concat("-"));       // Adds the addition symbol "-" to textfield1
+            multiply_ten_to_n_pressed = false;      // Sets the variable to hold a false boolean value 
+        }
+
+        if(e.getSource() == multiply && is_shift_pressed == false) {        // Checks if the minus button has been clicked and the shift button is false    
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {       // Checks if both the textfield1 and textfield2 have texts in them at the current moment and if the number of operations is 1
+                textfield1.setText("ANS");     // Sets textfield1 to have text "ANS"
+                textfield2.setText("");     // Sets textfield2 to "" to make it empty
+                num_operations ++;      // Increments the number in the variable by one
             }
             // to display "x" on the screen
-            textfield1.setText(textfield1.getText().concat("x"));
-            multiply_ten_to_n_pressed = false;
+            textfield1.setText(textfield1.getText().concat("x"));       // Adds the addition symbol "x" to textfield1
+            multiply_ten_to_n_pressed = false;      // Sets the variable to hold a false boolean value
         }
-        if(e.getSource() == multiply && is_shift_pressed == true) {
-            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
-                textfield1.setText( "ANS");
-                textfield2.setText("");
-                num_operations ++;
+        if(e.getSource() == multiply && is_shift_pressed == true) {     // Checks if the minus button has been clicked and the shift button is true                  
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {       // Checks if both the textfield1 and textfield2 have texts in them at the current moment and if the number of operations is 1
+                textfield1.setText( "ANS");     // Sets textfield1 to have text "ANS"
+                textfield2.setText("");     // Sets textfield2 to "" to make it empty     
+                num_operations ++;      // Increments the number in the variable by one
             }
-            // to display "ℙ" on the screen
-            textfield1.setText(textfield1.getText().concat("P"));
-            multiply_ten_to_n_pressed = false;
-            is_shift_pressed = false;
+            // to display "P" on the screen
+            textfield1.setText(textfield1.getText().concat("P"));       // Adds the addition symbol "P" to textfield1
+            multiply_ten_to_n_pressed = false;      // Sets the variable to hold a false boolean value
+            is_shift_pressed = false;       // Sets the variable to hold a false boolean value
         }
 
-        if(e.getSource() == divide && is_shift_pressed == false) {
-            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
-                textfield1.setText( "ANS");
-                textfield2.setText("");
-                num_operations ++;
+        if(e.getSource() == divide && is_shift_pressed == false) {      // Checks if the divide button has been clicked and the shift button is false      
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {       // Checks if both the textfield1 and textfield2 have texts in them at the current moment and if the number of operations is 1
+                textfield1.setText( "ANS");     // Sets textfield1 to have text "ANS"
+                textfield2.setText("");     // Sets textfield2 to "" to make it empty
+                num_operations ++;      // Increments the number in the variable by one      
             }
-            // to display "x" on the screen
-            textfield1.setText(textfield1.getText().concat("÷"));
-            multiply_ten_to_n_pressed = false;
+            // to display "÷" on the screen
+            textfield1.setText(textfield1.getText().concat("÷"));       // Adds the addition symbol "÷" to textfield1
+            multiply_ten_to_n_pressed = false;      // Sets the variable to hold a false boolean value
         }
-        if(e.getSource() == divide && is_shift_pressed == true) {
-            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
-                textfield1.setText( "ANS");
-                textfield2.setText("");
-                num_operations ++;
+        if(e.getSource() == divide && is_shift_pressed == true) {       // Checks if the divide button has been clicked and the shift button is true
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {       // Checks if both the textfield1 and textfield2 have texts in them at the current moment and if the number of operations is 1
+                textfield1.setText( "ANS");     // Sets textfield1 to have text "ANS"
+                textfield2.setText("");     // Sets textfield2 to "" to make it empty
+                num_operations ++;      // Increments the number in the variable by one
             }
-            // to display "ℂ" on the screen
-            textfield1.setText(textfield1.getText().concat("C"));
-            multiply_ten_to_n_pressed = false;
-            is_shift_pressed = false;
+            // to display "C" on the screen
+            textfield1.setText(textfield1.getText().concat("C"));       // Adds the addition symbol "C" to textfield1
+            multiply_ten_to_n_pressed = false;      // Sets the variable to hold a false boolean value
+            is_shift_pressed = false;       // Sets the variable to hold a false boolean value
         }
 
-        if(e.getSource() == del) {
-            int temp = textfield1.getCaretPosition();
-            String usertext = textfield1.getText();
-            textfield1.setText(usertext.substring(0, temp-1)+usertext.substring(temp, usertext.length()));
-            textfield1.setCaretPosition(temp-1);
-            textfield2.setText("");
-            num_operations = 0;
+        if(e.getSource() == del) {      // Checks if the del button has been clicked
+            int temp = textfield1.getCaretPosition();       // stores the position of the caret on the textfield in the variable
+            String usertext = textfield1.getText();     // stores the text inputted by the user into a variable
+            textfield1.setText(usertext.substring(0, temp-1)+usertext.substring(temp, usertext.length()));      // Sets the text in the textfield with a character deleted
+            textfield1.setCaretPosition(temp-1);        // Sets the position of the caret
+            textfield2.setText("");     // Sets textfield2 to "" to make it empty
+            num_operations = 0;     // Changes the value of the number of operations to zero
         }
 
-        if(e.getSource() == ac) {
-            textfield1.setText("");
-            textfield2.setText("");
-            num_operations = 0;
-            multiply_ten_to_n_pressed = false;
-            num_of_times_square_button_pressed = 0;
+        if(e.getSource() == ac) {       // Checks if the AC button has been clicked
+            textfield1.setText("");     // Sets textfield1 to "" to make it empty 
+            textfield2.setText("");     // Sets textfield2 to "" to make it empty
+            num_operations = 0;     // Changes the value of the number of operations to zero 
+            multiply_ten_to_n_pressed = false;      // Sets the boolean value of the variable to false
+            num_of_times_square_button_pressed = 0;     // Sets the number of times the square button is pressed to zero
         }
 
-        if(e.getSource() == ans_button && is_shift_pressed == false) {
-            textfield1.setText(textfield1.getText().concat("ANS"));
+        if(e.getSource() == ans_button && is_shift_pressed == false) {      // Checks if the ANS button has been clicked and if the shift button has been clicked
+            textfield1.setText(textfield1.getText().concat("ANS"));     // Adds "ANS" to textfield1(which where the user input is displayed)
         }
-        if(e.getSource() == ans_button && is_shift_pressed == true) {
-            textfield1.setText(textfield1.getText().concat("%"));
-            is_shift_pressed = false;
+        if(e.getSource() == ans_button && is_shift_pressed == true) {       // Checks if the ANS button has been clicked and if the shift button has been clicked
+            textfield1.setText(textfield1.getText().concat("%"));       // Adds "ANS" to textfield1(which where the user input is displayed)
+            is_shift_pressed = false;       // sets the boolean value of the variable for when the shift button is clicked, to false
         }
 
-        if(e.getSource() == left_bracket) {
-            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
-                textfield1.setText( "ANS");
-                textfield2.setText("");
-                num_operations ++;
+        if(e.getSource() == left_bracket) {     // Checks if the left bracket has been clicked
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {       // Checks if both the textfield1 and textfield2 have texts in them at the current moment and if the number of operations is 1       
+                textfield1.setText( "ANS");     // Sets textfield1 to have text "ANS"     
+                textfield2.setText("");     // Sets textfield2 to "" to make it empty
+                num_operations ++;      // Increments the number in the variable by one
             }
-            textfield1.setText(textfield1.getText().concat("("));
+            textfield1.setText(textfield1.getText().concat("("));       // Adds the left bracket symbol "(" to the textfield where user input is displayed(textfield1)
         }
 
-        if(e.getSource() == right_bracket) {
-            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
-                textfield1.setText( "ANS");
-                textfield2.setText("");
-                num_operations ++;
+        if(e.getSource() == right_bracket) {        // Checks if the right bracket has been clicked
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {       // Checks if both the textfield1 and textfield2 have texts in them at the current moment and if the number of operations is 1
+                textfield1.setText( "ANS");     // Sets textfield1 to have text "ANS" 
+                textfield2.setText("");     // Sets textfield2 to "" to make it empty
+                num_operations ++;      // Increments the number in the variable by one
             }
-            textfield1.setText(textfield1.getText().concat(")"));
+            textfield1.setText(textfield1.getText().concat(")"));       // Adds the left bracket symbol ")" to the textfield where user input is displayed(textxfield1)
         }
 
-        if(e.getSource() == reciprocate_function) {
-            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
-                textfield1.setText( "ANS");
-                textfield2.setText("");
-                num_operations ++;
+        if(e.getSource() == reciprocate_function) {     // Checks if the reciprocate button has been clicked
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {       // Checks if both the textfield1 and textfield2 have texts in them at the current moment and if the number of operations is 1
+                textfield1.setText( "ANS");     // Sets textfield1 to have text "ANS"      
+                textfield2.setText("");     // Sets textfield2 to "" to make it empty
+                num_operations ++;      // Increments the number in the variable by one
             }
-            textfield1.setText(textfield1.getText().concat("()⁻¹"));
-            textfield1.getCaret().setVisible(true);
+            textfield1.setText(textfield1.getText().concat("()⁻¹"));        // Adds "()⁻¹" to the textfield where user input is displayed(textxfield1)
+            textfield1.getCaret().setVisible(true);     // Sets the caret to be visible
         }
 
-        if(e.getSource() == multiply_ten_to_n && is_shift_pressed == false) {
-            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {
-                textfield1.setText( "ANS");
-                textfield2.setText("");
-                num_operations ++;
+        if(e.getSource() == multiply_ten_to_n && is_shift_pressed == false) {       // Checks if the x10² button has been clicked
+            if(!(textfield1.getText().equals("")) && !(textfield2.getText().equals("")) && num_operations == 1) {       // Checks if both the textfield1 and textfield2 have texts in them at the current moment and if the number of operations is 1
+                textfield1.setText( "ANS");     // Sets textfield1 to have text "ANS" 
+                textfield2.setText("");     // Sets textfield2 to "" to make it empty
+                num_operations ++;      // Increments the number in the variable by one      
             }
-            multiply_ten_to_n_pressed = true;
+            multiply_ten_to_n_pressed = true;       
             textfield1.setText(textfield1.getText().concat("x10⁽⁾"));
         }
         if(e.getSource() == multiply_ten_to_n && is_shift_pressed == true) {
@@ -853,6 +844,8 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
             textfield1.setText(textfield1.getText()+"log₁₀(");
         }
 
+        // add square root here then natural log
+
         if(e.getSource() == equalto) {
             String text = textfield1.getText();
             ArrayList<String> problem = new ArrayList<String>(text.length());
@@ -950,22 +943,26 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
                 text = text.replace(text.substring(n,n+5+i), temp);
             }
 
+            // Permutation
+            int temp_num = text.indexOf("P");
+            while(text.contains("P") && text.length() != 0 && list_of_numbers.contains(text.substring(temp_num-1, temp_num)) && list_of_numbers.contains(text.substring(temp_num+1, temp_num+2))) {
+                int n = Integer.valueOf(text.substring(temp_num-1, temp_num));
+                int r = Integer.valueOf(text.substring(temp_num+1, temp_num+2));
+                double result = functions.factorial(n)/functions.factorial(n-r);
+            } 
+
             // Bracket
-            String list_of_numbers = "0123456789";
-            String list_of_numbers_and_operators = "0123456789+x÷-";
             while(text.contains("(") && text.contains(")") && (text.indexOf("(") == 0 || list_of_numbers_and_operators.contains(text.substring(text.indexOf("(")-1, text.indexOf("("))))) {
                 if(text.indexOf("(") != 0) {
                     String str_temp = text.substring(text.indexOf("(")-1, text.indexOf("("));
-                    if(list_of_numbers.contains(text.substring(text.indexOf("(")-1, text.indexOf("(")))){
+                    if(list_of_numbers.contains(str_temp)){
                         text = text.replaceFirst(str_temp, str_temp+"x");
                     }
                 }
                 int temp_1 = text.indexOf("(");
                 int temp_2 = text.indexOf(")");
                 String temp_problem = text.substring(temp_1+1, temp_2);
-                text = text.replaceFirst("[(]", "");
-                text = text.replaceFirst("[)]", "");
-                text = text.replaceFirst(Pattern.quote(temp_problem), functions.basic(temp_problem, problem));
+                text = text.replaceFirst("[(]"+Pattern.quote(temp_problem)+"[)]", functions.basic(temp_problem, problem));
 
             }
 
@@ -983,7 +980,7 @@ public class CalculatorGUI implements java.awt.event.ActionListener {
                 text = text.replace(text.substring(n-1, number.length()+n+3), temp);
             } 
 
-            // square nuber 
+            // square number 
             while(is_square_button_pressed == true && num_of_times_square_button_pressed != 0) {
                 if(text.contains("ANS²")) {
                     int o = text.indexOf("ANS²");

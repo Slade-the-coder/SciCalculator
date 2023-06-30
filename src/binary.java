@@ -1,6 +1,6 @@
 public class binary  extends CalculatorGUI{
     public static void main(String[] args) {
-        double num = 59.5;
+        double num = 2;
         System.out.println(getbinary(num));
     }
 
