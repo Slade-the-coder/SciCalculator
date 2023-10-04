@@ -260,6 +260,7 @@ class functions extends CalculatorGUI{
             problem.remove(z); problem.remove(z);
         }
         
+        //
         num_operations = 1;
         String result_in_string = Double.toString(result);
         if(result_in_string.contains("E")) {
